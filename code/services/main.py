@@ -1,6 +1,9 @@
 from flask import Flask,render_template, request, session, redirect, url_for
 import smtplib, ssl
 from threading import Thread
+import yfinance as yf
+import requests
+import constants
 import csv
 context = ssl.create_default_context()
 
@@ -10,6 +13,7 @@ class constants():
     EMAIL                 = "trexycrocs@gmail.com"
     EMAILPASSWORD         = "geneavianina"
     PORT                  = 465  # For SSL
+    API_WEBSITE_URL         = "https://ForesightAPI.sentientplatypu.repl.co"
 
 #path = '/home/SentientPlatypus/Personal-platypus-website/code'
 #if path not in sys.path:
@@ -31,6 +35,12 @@ app = createApp()
 def home():
     return render_template("./index.html")
 
+@app.route("/home")
+def home2():
+    return render_template("./index.html")
+
+
+
 @app.route("/index")
 def home1():
     return render_template("./index.html")
@@ -43,7 +53,38 @@ def ContactMe(sent):
     return render_template("./index.html", sent=bool)
 
 
+
+@app.route("/search", methods=["GET"])
+def search():
+    args = request.args
+    ticker = args.get("searchedTicker")
+    req = requests.get(constants.API_WEBSITE_URL + f"/checkTicker/{ticker}").text
+    if req == "invalidTicker":
+        return redirect(url_for("tickerNotFound", InvalidTicker=ticker))
+    return redirect(url_for("data", company = ("'" + yf.Ticker(ticker).info["longName"] + "'")))
+
+@app.route("/tickerNotFound/<string:InvalidTicker>", methods=["GET"])
+def tickerNotFound(InvalidTicker):
+    args = request.args
+    return render_template("./TickerNotFound.html", InvalidTicker = InvalidTicker)
+
+@app.route("/data/<string:company>")
+def data(company: str):
+    return render_template("data.html", companyName=company)
     
+
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route("/ContactMe/HandleData", methods=['POST'])
 def HandleData():
     projectpath = request.form
@@ -60,7 +101,7 @@ def HandleData():
     name = form["name"]
     subject = form["subject"]
     message = form["content"]
-
+    
     # with open("./contacts.csv", "a") as f:
     #     csvWriter = csv.writer(f)
     #     csvWriter.writerow([name, sendingEmail, subject, message])
