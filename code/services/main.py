@@ -5,6 +5,8 @@ import yfinance as yf
 import requests
 import constants
 import csv
+import helperfunctions
+
 context = ssl.create_default_context()
 
 
@@ -31,6 +33,35 @@ def createApp():
 
 app = createApp()
 
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template(
+        "./error.html",
+        code = 404,
+        msg = f"page not found. It simply does not exist lmao.",
+        desc = f"{e}"
+    )
+
+@app.errorhandler(500)
+def InternalError(e):
+    return render_template(
+        "./error.html",
+        code = 500,
+        msg = f"Internal server error.",
+        desc = f"{e}"
+    )
+
+@app.errorhandler(403)
+def forbidden(e):
+    return render_template(
+        "./error.html",
+        code = 403,
+        msg = f"Forbidden. We tried to fetch some data. You said no. Thats ok. Consent is great.",
+        desc = f"{e}"
+    )
+
 @app.route("/")
 def home():
     return render_template("./index.html")
@@ -38,8 +69,6 @@ def home():
 @app.route("/home")
 def home2():
     return render_template("./index.html")
-
-
 
 @app.route("/index")
 def home1():
@@ -58,10 +87,22 @@ def ContactMe(sent):
 def search():
     args = request.args
     ticker = args.get("searchedTicker")
-    req = requests.get(constants.API_WEBSITE_URL + f"/checkTicker/{ticker}").text
-    if req == "invalidTicker":
-        return redirect(url_for("tickerNotFound", InvalidTicker=ticker))
-    return redirect(url_for("data", company = ("'" + yf.Ticker(ticker).info["longName"] + "'")))
+    
+    tickerObj = yf.Ticker(ticker)
+    if helperfunctions.isTickerValid(tickerObj):
+        company_info = tickerObj.info
+        print(company_info)
+        return redirect(
+            url_for(
+                "data", 
+                company = ("'" + tickerObj.info["longName"] + "'")
+            )
+        )
+    else:
+        return redirect(url_for("tickerNotFound", InvalidTicker = ticker ))
+
+
+
 
 @app.route("/tickerNotFound/<string:InvalidTicker>", methods=["GET"])
 def tickerNotFound(InvalidTicker):

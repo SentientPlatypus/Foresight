@@ -27,32 +27,24 @@
             </div>
         </div>
         <script src="{{url_for('static', filename='js/loader.js')}}"></script>
-
-
         <div class="header">
             <a href="/home">
                 <img class="logo" src="{{ url_for('static',filename='images/ForesightLogo.png') }}" alt="Foresight">
             </a>
         </div>
-
         <div class="HeroContainer">            
             <div class="HeroHeader">
                 <h1 class="HeroText">
-                    {{companyName}}
+                    Error code {{code}}
                 </h1>
                 <h3 class="HeroSub">
-                    Dayum
+                    {{msg}}
                 </h3>
-                <!-- <script>
-                    document.querySelector("#searchForm").addEventListener("submit", function(e){
-                            var submitValue = document.querySelector(".submit").nodeValue;
-                            alert(submitValue);
-                            e.preventDefault();
-                        })
-                </script> -->
+                <p>
+                    {{desc}}
+                </p>
             </div>
         </div>
-
         <footer>
             <div class="container">
                 <div class="row">
@@ -87,12 +79,4 @@
             </div>
         </footer>
         <script src="{{ url_for('static',filename='js/indexScrollmagic.js') }}"></script>
-
-
-
-
-
-
-
-
     </body>
