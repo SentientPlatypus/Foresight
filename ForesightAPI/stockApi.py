@@ -3,6 +3,7 @@ import smtplib, ssl
 from threading import Thread
 import requests
 import yfinance as yf
+import constants
 import csv
 context = ssl.create_default_context()
 
@@ -34,15 +35,21 @@ app = createApp()
 #     # return company_code
 
 
-@app.route("/checkTicker/<string:companyName>")
-def checkTicker(companyName:str):
+@app.route("/isTickerValid/<string:ticker>")
+def isTickerValid(ticker:str) -> bool:
+    """Checks if ticker is valid."""
     try:
-        company = yf.Ticker(companyName)
-        information = company.info
-        longName = information["longName"]
-        return information
+        tickerObj = yf.Ticker(ticker)
+        tickerObj.info["longName"]
+        return constants.TRUE
     except:
-        return "invalidTicker"
+        return constants.FALSE
+
+@app.route("/getInfo/<string:ticker>")
+def getInfo(ticker:str) -> dict:
+    """Prerequisite is that ticker must be valid. Use isTickerValid for this."""
+    tickerObj = yf.Ticker(ticker)
+    return tickerObj.info
 
 @app.route("/")
 def home():

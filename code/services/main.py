@@ -120,12 +120,12 @@ def tickerNotFound(InvalidTicker):
 
 @app.route("/data/<string:companyTicker>")
 def data(companyTicker:str):
-    tickerObj = yf.Ticker(companyTicker)
-
+    tickerObjInfo = helperfunctions.getInfo(companyTicker)
+    print(tickerObjInfo)
     return render_template(
         "data.html", 
-        companyName = ("'" + tickerObj.info["longName"] + "'"),
-        currentValue = "274.03 USD",
+        companyName = ("'" + tickerObjInfo["longName"] + "'"),
+        currentValue = tickerObjInfo["currentPrice"]+ "USD",
         priceChange = "+6.78 (2.41%) Today",
         marketStatus = "Closed April 22, 7:59PM EST",
         companyDesc = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
