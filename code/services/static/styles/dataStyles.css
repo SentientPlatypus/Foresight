@@ -55,7 +55,6 @@ body {
 
 
 .header {
-    position: absolute;
     width: 100%;
     justify-content: center;
     text-align: center;
@@ -74,54 +73,6 @@ body {
     height: 100%;
 }
 
-/* @media (max-aspect-ratio: 630/762) {
-    img.logo {
-        content:url("../images/ForesightLogoNoText.png")
-    }
-}
-
-@media (min-aspect-ratio: 630/762) {
-    img.logo {
-        content:url("../images/ForesightLogo.png")
-    }
-} */
-
-.NavBar {
-    width: max-content;
-    position:relative;
-    justify-content: right;
-    right: 5vw;
-}
-
-
-.NavBar a{
-    position:relative;
-    text-decoration: none;
-    text-align: left;
-    width: 117px;
-    margin-right: 3vw;
-    height: 26px;
-    top: 25%;
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    color: #FFFFFF;
-    transition: all 0.3s;
-}
-
-.NavBar a:hover{
-    color: #7ffff7;
-}
-
-
-
-.HeroContainer {
-    justify-content: center;
-    text-align: center;
-
-}
 
 canvas#mainCanvas {
     position: relative;
@@ -134,8 +85,8 @@ h1 {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 800;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 40px;
+    line-height: auto;
     color: white;
 }
 
@@ -143,8 +94,7 @@ h2 {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 800;
-    font-size: 2em;
-    line-height: 2em;
+    line-height: auto;
     color: #FFFFFF;
 }
 
@@ -152,107 +102,162 @@ h3 {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 2em;
+    font-size: 24px;
     line-height: 1em;
     color: #707070;
 }
+
+.news h3 {
+    color:white;
+}
+
+
+
 p {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 20px;
     color: #707070;
 }
 
-h1.HeroText {
-    margin-bottom: 0px;
-    justify-content: center;
-    text-align: center;
-    font-size: 4em;
-    line-height: 2em;
-    width: 100%;
+p.positive {
+    color: #00FF19;
+}
+
+p.negative {
+    color: #FF0000;
+}
+
+p.publisher {
+    font-size: 16px;
+}
+
+p.title {
+    color: white;
+}
+
+
+
+.container, .cardLayout {
     position: relative;
-}
-
-
-h3.HeroSub{
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-
-    position:relative;
-    top: 0vh;
-}
-
-.HeroHeader {
-    margin-bottom: 0px;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    position:relative;
+    display: flex;
+    width: 90vw;
+    left: 5vw;
     top: 10vh;
 }
 
-
-section #about {
-    background-color: white;
+.mainVisual{
+    width: 65%;
+    margin-left: 5%;
 }
 
-#aboutContainer {
+.mainVisual .priceInfo {
     display: flex;
-    position: relative;
-    left: 5vw;
-    width: 90vw;
+    width: 100%;
 }
 
-@media (max-aspect-ratio:500/891) {
-    div#aboutContainer {
+.priceInfo h2 {
+    width: 36%;
+}
+
+.scheduleAndChange {
+    width: 64%;
+}   
+
+.companyInfo {
+    width: 30%;
+}
+
+.nameAndLogo {
+    width: 100%;
+    display: flex;
+}
+
+img.companyLogo {
+    max-height: 10vmin;
+    max-width:10vmin;
+    width: auto;
+    height: auto;
+}
+
+.nameAndLogo h1 {
+    width: 86%;
+}
+
+@media (max-aspect-ratio: 1040/1000)
+{
+    div.container {
         display: block;
-        justify-content: center;
-        text-align: center;
+    }
+
+    div.mainVisual, div.companyInfo, div.cards {
+        width: 100%;
     }
 }
 
-#aboutContainer img {
-    width: 45%;
-    height: auto;
+@media (max-aspect-ratio: 1086/986)
+{
+
+    div.cardLayout {
+        display: block;
+    }
+    div.cards {
+        max-height: 30vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+    div.card {
+        margin: 0px;
+        margin-left: 2vmin;
+        margin-right: 2vmin;
+    }
 }
 
-.aboutButton {
-    border-radius: 5px;
-    text-align: center;
-    font-family: "Raleway";
-    font-size: 24px;
-    color: #707070;
-    border: #707070 2px solid;
-    font-weight: 400px;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.aboutButton:hover {
-    border: #4545E6 2px solid;
-}
-
-
-
-.headText {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-}
-
-.layout {
-    position: relative;
+.cards {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
-    left: 10vw;
-    height: auto;
-    width: 80vw;
-    justify-content: center;
 }
+
+.card {
+    background: #343434;
+    border-radius: 35px;
+    width: 300px;
+    height: 140px;
+    margin: 2vmin;
+}
+
+.scrollable {
+    height: 40vh;
+}
+
+.article{
+    background: #262626;
+    border-radius: 9px;
+}
+
+.article * {
+    margin-left: 5%;
+}
+
+.cardValue {
+    margin-left: 5%;
+    display: flex;
+}
+
+.cardTitle {
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.cardValue p {
+    margin-left: 5%;
+}
+
+
 
 
 

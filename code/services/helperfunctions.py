@@ -1,9 +1,10 @@
 import yfinance as yf
 
 
-def isTickerValid(ticker:yf.Ticker) -> bool:
+def isTickerValid(ticker:str) -> bool:
     try:
-        ticker.info["longName"]
+        tickerObj = yf.Ticker(ticker)
+        tickerObj.info["longName"]
         return True
     except:
         return False

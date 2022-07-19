@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!--{{ url_for('static',filename='styles/indexStyles.css') }}-->
-<!--C:\Users\trexx\Documents\PYTHON CODE LOL\PersonalWebsite\Personal-platypus-website\code\static\styles\indexStyles.css -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -8,7 +6,7 @@
         <title>Foresight</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tickerNotFoundStyles.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dataStyles.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.1/css/all.css. ">
         <link rel="icon" href="{{ url_for('static',filename='images/LOGONOTEXT.png') }}">
         <script src="https://kit.fontawesome.com/1b4a129057.js" crossorigin="anonymous"></script>
@@ -17,7 +15,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js" integrity="sha512-5/OHwmQzDSBS0Ous4/hlYoWLHd06/d2r7LdKZQVBXOA6PvOqWVXtdboiLTU7lQTGyVoKVTNkwi0ol4gHGlw5ww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js" integrity="sha512-RvUydNGlqYJapy0t4AH8hDv/It+zKsv4wOQGb+iOnEfa6NnF2fzjXgRy+FDjSpMfC3sjokNUzsfYZaZ8QAwIxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     </head>
     <body class="preload">
         <div id="loader-wrapper">
@@ -27,32 +24,126 @@
             </div>
         </div>
         <script src="{{url_for('static', filename='js/loader.js')}}"></script>
-
-
         <div class="header">
             <a href="/home">
                 <img class="logo" src="{{ url_for('static',filename='images/ForesightLogo.png') }}" alt="Foresight">
             </a>
         </div>
+        
+        <div class="container">
+            <div class="mainVisual">
+                <div class="priceInfo">
+                    <h2>{{currentValue}}</h2>
+                    <div class="scheduleAndChange">
+                        <p class="change">
+                            {{priceChange}}
+                        </p>
+                        <p>
+                            {{marketStatus}}
+                        </p>
+                    </div>
+                </div>
+                <div class="graph">
 
-        <div class="HeroContainer">            
-            <div class="HeroHeader">
-                <h1 class="HeroText">
-                    {{companyName}}
-                </h1>
-                <h3 class="HeroSub">
-                    Dayum
-                </h3>
-                <!-- <script>
-                    document.querySelector("#searchForm").addEventListener("submit", function(e){
-                            var submitValue = document.querySelector(".submit").nodeValue;
-                            alert(submitValue);
-                            e.preventDefault();
-                        })
-                </script> -->
+                </div>
+            </div>
+            <div class="companyInfo">
+                <div class="nameAndLogo">
+                    <h1>{{companyName}}</h1>
+                    <img class="companyLogo" src="{{companyLogoUrl}}" alt="{{companyName}}">
+                </div>
+                <p class="companyDesc">
+                    {{companyDesc}}
+                </p>
             </div>
         </div>
+        <div class="cardLayout">
+            <div class="cards">
+                <div class="card" id="revenue">
+                    <h3 class="cardTitle">
+                        Revenue
+                    </h3>
+                    <div class="cardValue">
+                        <h2>49.36B</h2>
+                        <p class="change">
+                            +18.35%
+                        </p>
+                    </div>
+                </div>
+                <div class="card" id="Expense">
+                    <h3 class="cardTitle">
+                        Expense
+                    </h3>
+                    <div class="cardValue">
+                        <h2>13.38B</h2>
+                        <p class="change">
+                            +15.22%
+                        </p>
+                    </div>
+                </div>
+                <div class="card" id="netIncome">
+                    <h3 class="cardTitle">
+                        Net income
+                    </h3>
+                    <div class="cardValue">
+                        <h2>16.73BB</h2>
+                        <p class="change">
+                            +8.22%
+                        </p>
+                    </div>
 
+                </div>
+                <div class="card" id="Earnings/Share">
+                    <h3 class="cardTitle">
+                        Earnings/Share
+                    </h3>
+                    <div class="cardValue">
+                        <h2>2.22</h2>
+                        <p class="change">
+                            +13.85%
+                        </p>
+                    </div>
+                </div>
+                <div class="card" id="EBITDA">
+                    <h3 class="cardTitle">
+                        EBITDA
+                    </h3>
+                    <div class="cardValue">
+                        <h2>24.14B</h2>
+                        <p class="change">
+                            +20.78%
+                        </p>
+                    </div>
+                </div>
+                <div class="card" id="ETR">
+                    <h3 class="cardTitle">
+                        Effective Tax Rate
+                    </h3>
+                    <div class="cardValue">
+                        <h2>17.15%</h2>
+                        <p class="change">
+                            -
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="news">
+                <h3>News</h3>
+                <div class="scrollable">
+                    <a href="https://youtube.com">
+                        <div class="article">
+                            <p class="publisher">
+                                Barrons, 2 days ago
+                            </p>
+                            <p class="title">
+                                Microsoft Estimates Face PC Weakness and Currency Headwinds, Says Analyst
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static',filename='js/changeColor.js') }}"></script>
         <footer>
             <div class="container">
                 <div class="row">
@@ -86,13 +177,4 @@
                 © 2022 Resonance
             </div>
         </footer>
-        <script src="{{ url_for('static',filename='js/indexScrollmagic.js') }}"></script>
-
-
-
-
-
-
-
-
     </body>

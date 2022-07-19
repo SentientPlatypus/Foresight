@@ -1,4 +1,5 @@
 from flask import Flask,render_template, request, session, redirect, url_for
+from flask_mail import Mail, Message
 import smtplib, ssl
 from threading import Thread
 import yfinance as yf
@@ -6,6 +7,7 @@ import requests
 import constants
 import csv
 import helperfunctions
+import pprint
 
 context = ssl.create_default_context()
 
@@ -33,6 +35,17 @@ def createApp():
 
 app = createApp()
 
+app.config.update(dict(
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = 587,
+    MAIL_USE_TLS = True,
+    MAIL_USE_SSL = False,
+    MAIL_USERNAME = constants.EMAIL,
+    MAIL_PASSWORD = constants.EMAILPASSWORD,
+))
+
+
+mail = Mail(app)
 
 
 @app.errorhandler(404)
@@ -87,15 +100,11 @@ def ContactMe(sent):
 def search():
     args = request.args
     ticker = args.get("searchedTicker")
-    
-    tickerObj = yf.Ticker(ticker)
-    if helperfunctions.isTickerValid(tickerObj):
-        company_info = tickerObj.info
-        print(company_info)
+    if helperfunctions.isTickerValid(ticker):
         return redirect(
             url_for(
                 "data", 
-                company = ("'" + tickerObj.info["longName"] + "'")
+                companyTicker= ticker
             )
         )
     else:
@@ -109,64 +118,35 @@ def tickerNotFound(InvalidTicker):
     args = request.args
     return render_template("./TickerNotFound.html", InvalidTicker = InvalidTicker)
 
-@app.route("/data/<string:company>")
-def data(company: str):
-    return render_template("data.html", companyName=company)
-    
+@app.route("/data/<string:companyTicker>")
+def data(companyTicker:str):
+    tickerObj = yf.Ticker(companyTicker)
 
-
-
-
-
-
-
-
-
-
-
-
+    return render_template(
+        "data.html", 
+        companyName = ("'" + tickerObj.info["longName"] + "'"),
+        currentValue = "274.03 USD",
+        priceChange = "+6.78 (2.41%) Today",
+        marketStatus = "Closed April 22, 7:59PM EST",
+        companyDesc = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+        companyLogoUrl = "https://logo.clearbit.com/microsoft.com"
+    )
 
 @app.route("/ContactMe/HandleData", methods=['POST'])
 def HandleData():
-    projectpath = request.form
-    print(projectpath)
-    form = {}
-    for key in projectpath.keys():
-        values = projectpath.getlist(key)
-        if len(values) == 1:
-            form[key] = values[0]
-        else:
-            form[key] = values
-
-    sendingEmail = form["email"]
-    name = form["name"]
-    subject = form["subject"]
-    message = form["content"]
-    
-    # with open("./contacts.csv", "a") as f:
-    #     csvWriter = csv.writer(f)
-    #     csvWriter.writerow([name, sendingEmail, subject, message])
-    gmail_user = constants.EMAIL
-    gmail_password = constants.EMAILPASSWORD
-    to = [constants.EMAIL]
-    email_text = """
-    From: %s , %s
-    To: %s
-    Subject: %s
-
-    %s
-    """ % (sendingEmail,name, ", ".join(to), subject, message)
-    try:
-        smtp_server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-        smtp_server.ehlo()
-        smtp_server.login(gmail_user, gmail_password)
-        smtp_server.sendmail(sendingEmail, to, email_text)
-        smtp_server.close()
-        print ("Email sent successfully!")
-    except Exception as ex:
-        print ("Something went wrong….", ex)
+    projectpath = request.form    
+    sendingEmail = projectpath.get("email")
+    name = projectpath.get("name")
+    subject = projectpath.get("subject")
+    message = projectpath.get("content")
+    msg = Message(
+        subject = subject,
+        recipients= [constants.SENDTOEMAIL],
+        body = f"FROM: {name}, EMAIL: {sendingEmail}, \n {message}"
+    )
+    msg.sender = constants.EMAIL
+    mail.send(msg)
     return redirect(url_for("ContactMe", sent=1))
-
 
 def run():
   app.run(host='0.0.0.0',port=8080)
