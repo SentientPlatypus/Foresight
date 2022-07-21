@@ -9,7 +9,11 @@ body {
     overflow-x: hidden;
 }
 
-
+* {
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 0;
+}
 
 .preload {
     overflow: hidden;
@@ -111,6 +115,9 @@ h3 {
     color:white;
 }
 
+.news {
+    width: 45%;
+}
 
 
 p {
@@ -167,6 +174,13 @@ p.title {
 
 .companyInfo {
     width: 30%;
+    height: 60vh;
+}
+
+.companyDesc {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 60%;
 }
 
 .nameAndLogo {
@@ -191,12 +205,18 @@ img.companyLogo {
         display: block;
     }
 
-    div.mainVisual, div.companyInfo, div.cards {
+    div.mainVisual, div.cards {
         width: 100%;
+    }
+
+    div.companyInfo{
+        width: 100%;
+        height: 30vh;
+        margin-bottom: 5vh;
     }
 }
 
-@media (max-aspect-ratio: 1086/986)
+@media (max-width: 1390px)
 {
 
     div.cardLayout {
@@ -210,14 +230,16 @@ img.companyLogo {
         width: 100%;
     }
     div.card {
-        margin: 0px;
         margin-left: 2vmin;
         margin-right: 2vmin;
+    }
+    div.news {
+        width: 100%;
     }
 }
 
 .cards {
-    width: 70%;
+    width: 55%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -225,18 +247,28 @@ img.companyLogo {
 .card {
     background: #343434;
     border-radius: 35px;
-    width: 300px;
+    width: 250px;
     height: 140px;
     margin: 2vmin;
 }
 
 .scrollable {
     height: 40vh;
+    display: inline-block;
+    width: 100%;
 }
 
 .article{
     background: #262626;
     border-radius: 9px;
+    transition: all 0.3s;
+}
+
+.article:hover{
+    background: #262626;
+    border-radius: 9px;
+    transform: scaleY(1.20);
+    transform: scaleX(.95);
 }
 
 .article * {

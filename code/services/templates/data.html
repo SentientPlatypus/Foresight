@@ -33,13 +33,13 @@
         <div class="container">
             <div class="mainVisual">
                 <div class="priceInfo">
-                    <h2>{{currentValue}}</h2>
+                    <h2>{{t['currentValue']['value']}}</h2>
                     <div class="scheduleAndChange">
                         <p class="change">
-                            {{priceChange}}
+                            {{t['currentValue']['change']}}
                         </p>
                         <p>
-                            {{marketStatus}}
+                            {{t['marketStatus']}}
                         </p>
                     </div>
                 </div>
@@ -49,11 +49,11 @@
             </div>
             <div class="companyInfo">
                 <div class="nameAndLogo">
-                    <h1>{{companyName}}</h1>
-                    <img class="companyLogo" src="{{companyLogoUrl}}" alt="{{companyName}}">
+                    <h1>{{t['companyName']}}</h1>
+                    <img class="companyLogo" src="{{t['companyLogoUrl']}}" alt="{{t['companyName']}}">
                 </div>
                 <p class="companyDesc">
-                    {{companyDesc}}
+                    {{t['companyDesc']}}
                 </p>
             </div>
         </div>
@@ -61,12 +61,12 @@
             <div class="cards">
                 <div class="card" id="revenue">
                     <h3 class="cardTitle">
-                        Revenue
+                        Total Revenue
                     </h3>
                     <div class="cardValue">
-                        <h2>49.36B</h2>
+                        <h2>{{t['totalRevenue']['value']}}</h2>
                         <p class="change">
-                            +18.35%
+                            {{t['totalRevenue']['change']}}
                         </p>
                     </div>
                 </div>
@@ -75,9 +75,9 @@
                         Expense
                     </h3>
                     <div class="cardValue">
-                        <h2>13.38B</h2>
+                        <h2>{{t['expense']['value']}}</h2>
                         <p class="change">
-                            +15.22%
+                            {{t['expense']['change']}}
                         </p>
                     </div>
                 </div>
@@ -86,21 +86,21 @@
                         Net income
                     </h3>
                     <div class="cardValue">
-                        <h2>16.73BB</h2>
+                        <h2>{{t['netIncome']['value']}}</h2>
                         <p class="change">
-                            +8.22%
+                            {{t['netIncome']['change']}}
                         </p>
                     </div>
 
                 </div>
                 <div class="card" id="Earnings/Share">
                     <h3 class="cardTitle">
-                        Earnings/Share
+                        Revenue/Share
                     </h3>
                     <div class="cardValue">
-                        <h2>2.22</h2>
+                        <h2>{{t['revenuePerShare']['value']}}</h2>
                         <p class="change">
-                            +13.85%
+                            {{t['revenuePerShare']['change']}}
                         </p>
                     </div>
                 </div>
@@ -109,9 +109,9 @@
                         EBITDA
                     </h3>
                     <div class="cardValue">
-                        <h2>24.14B</h2>
+                        <h2>{{t['ebitda']['value']}}</h2>
                         <p class="change">
-                            +20.78%
+                            {{t['ebitda']['change']}}
                         </p>
                     </div>
                 </div>
@@ -120,9 +120,9 @@
                         Effective Tax Rate
                     </h3>
                     <div class="cardValue">
-                        <h2>17.15%</h2>
+                        <h2>{{t['effectiveTaxRate']['value']}}</h2>
                         <p class="change">
-                            -
+                            {{t['effectiveTaxRate']['change']}}
                         </p>
                     </div>
                 </div>
@@ -131,6 +131,14 @@
                 <h3>News</h3>
                 <div class="scrollable">
                     <a href="https://youtube.com">
+                        <div class="article">
+                            <p class="publisher">
+                                Barrons, 2 days ago
+                            </p>
+                            <p class="title">
+                                Microsoft Estimates Face PC Weakness and Currency Headwinds, Says Analyst
+                            </p>
+                        </div>
                         <div class="article">
                             <p class="publisher">
                                 Barrons, 2 days ago

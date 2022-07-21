@@ -110,9 +110,6 @@ def search():
     else:
         return redirect(url_for("tickerNotFound", InvalidTicker = ticker ))
 
-
-
-
 @app.route("/tickerNotFound/<string:InvalidTicker>", methods=["GET"])
 def tickerNotFound(InvalidTicker):
     args = request.args
@@ -120,16 +117,10 @@ def tickerNotFound(InvalidTicker):
 
 @app.route("/data/<string:companyTicker>")
 def data(companyTicker:str):
-    tickerObjInfo = helperfunctions.getInfo(companyTicker)
-    print(tickerObjInfo)
+    tickerObjDict = helperfunctions.getInfo(companyTicker)
     return render_template(
         "data.html", 
-        companyName = ("'" + tickerObjInfo["longName"] + "'"),
-        currentValue = tickerObjInfo["currentPrice"]+ "USD",
-        priceChange = "+6.78 (2.41%) Today",
-        marketStatus = "Closed April 22, 7:59PM EST",
-        companyDesc = "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
-        companyLogoUrl = "https://logo.clearbit.com/microsoft.com"
+        t = tickerObjDict
     )
 
 @app.route("/ContactMe/HandleData", methods=['POST'])

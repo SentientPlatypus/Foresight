@@ -5,6 +5,8 @@ import requests
 import yfinance as yf
 import constants
 import csv
+from stockFunctions import human_format, getPercentChange
+
 context = ssl.create_default_context()
 
 def createApp():
@@ -16,23 +18,6 @@ def createApp():
     return app
 
 app = createApp()
-
-
-
-# def getTicker (company_name):
-#     try:
-#         company = yf.Ticker(company_name)
-#         information = company.info
-#         longName = information["longName"]
-#         return information
-#     except:
-#         return "invalidTicker"
-#     # url = "https://s.yimg.com/aq/autoc"
-#     # parameters = {'query': company_name, 'lang': 'en-US'}
-#     # response = requests.get(url = url, params = parameters)
-#     # data = response.json()
-#     # company_code = data['ResultSet']['Result'][0]['symbol']
-#     # return company_code
 
 
 @app.route("/isTickerValid/<string:ticker>")
@@ -49,7 +34,59 @@ def isTickerValid(ticker:str) -> bool:
 def getInfo(ticker:str) -> dict:
     """Prerequisite is that ticker must be valid. Use isTickerValid for this."""
     tickerObj = yf.Ticker(ticker)
-    return tickerObj.info
+    tickerObjInfo = tickerObj.info
+    
+    info_we_need = {
+        "companyName" : ("'" + tickerObjInfo["longName"] + "'"),
+        "currentValue" : {
+            "value" : str(tickerObjInfo["currentPrice"])+ "USD",
+            "change" : "+6.78 (2.41%) Today"
+        },
+        "marketStatus" : "Closed April 22, 7:59PM EST",
+        "companyDesc" : tickerObjInfo["longBusinessSummary"],
+        "companyLogoUrl" : tickerObjInfo["logo_url"],
+        "totalRevenue": {
+            "value":human_format(tickerObjInfo["totalRevenue"]),
+            "change": "+18.35%"
+        },
+        "revenuePerShare" : {
+            "value":human_format(tickerObjInfo["revenuePerShare"]),
+            "change":"+13.7%"
+        },
+        "ebitda" : {
+            "value":human_format(tickerObjInfo["ebitda"]),
+            "change":"+20.78%"
+        },
+        "expense" : {
+            "value": human_format(tickerObjInfo["totalRevenue"] - tickerObjInfo["netIncomeToCommon"]),
+            "change": "+15.22%"
+        },
+        "netIncome" : {
+            "value":human_format(tickerObjInfo["netIncomeToCommon"]),
+            "change": "+8.22"
+        },
+        "effectiveTaxRate" : {
+            "value":"17.15%",
+            "change": "-"
+        }
+    }
+    return info_we_need
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/")
 def home():
