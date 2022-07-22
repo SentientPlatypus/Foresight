@@ -185,6 +185,13 @@ h3.HeroSub{
     top: 0vh;
 }
 
+@media (max-width: 313px)
+{
+    .HeroHeader h3.HeroSub{
+        display: none;
+    }
+}
+
 .HeroHeader {
     margin-bottom: 0px;
     justify-content: center;
@@ -206,7 +213,7 @@ section #about {
     width: 90vw;
 }
 
-@media (max-aspect-ratio:500/891) {
+@media (max-width:880px) {
     div#aboutContainer {
         display: block;
         justify-content: center;

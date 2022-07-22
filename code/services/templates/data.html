@@ -130,24 +130,18 @@
             <div class="news">
                 <h3>News</h3>
                 <div class="scrollable">
-                    <a href="https://youtube.com">
-                        <div class="article">
-                            <p class="publisher">
-                                Barrons, 2 days ago
-                            </p>
-                            <p class="title">
-                                Microsoft Estimates Face PC Weakness and Currency Headwinds, Says Analyst
-                            </p>
-                        </div>
-                        <div class="article">
-                            <p class="publisher">
-                                Barrons, 2 days ago
-                            </p>
-                            <p class="title">
-                                Microsoft Estimates Face PC Weakness and Currency Headwinds, Says Analyst
-                            </p>
-                        </div>
+                    {% for a in newsList["articles"]%}
+                    <a href="{{a['link']}}">
+                            <div class="article">
+                                <p class="publisher">
+                                    {{a["publisher"]}} {{a["date"]}}
+                                </p>
+                                <p class="title">
+                                    {{a["title"]}}
+                                </p>
+                            </div>
                     </a>
+                    {%endfor%}
                 </div>
             </div>
         </div>

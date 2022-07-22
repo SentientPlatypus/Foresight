@@ -256,12 +256,18 @@ img.companyLogo {
     height: 40vh;
     display: inline-block;
     width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .article{
     background: #262626;
     border-radius: 9px;
     transition: all 0.3s;
+}
+
+.scrollable a {
+    text-decoration: none;
 }
 
 .article:hover{

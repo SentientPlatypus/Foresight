@@ -10,8 +10,14 @@ def isTickerValid(ticker:str) -> bool:
     print(data)
     return data == constants.TRUE
 
+print(isTickerValid("msft"))
+
 def getInfo(ticker:str) -> dict:
     data = requests.get(constants.API_URL + constants.GET_TICKER_INFO_ENDING + ticker).json()
+    return data
+
+def getNews(ticker:str) ->list[dict]:
+    data = requests.get(constants.API_URL + constants.GET_NEWS_ENDING + ticker).json()
     return data
 
 def human_format(num):
@@ -21,6 +27,9 @@ def human_format(num):
         magnitude += 1
         num /= 1000.0
     return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
+
+
+
 
 def getPercentChange(current, previous) ->str:
     return str((current - previous)/previous * 100) + "%"
