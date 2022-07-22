@@ -1,3 +1,4 @@
+from turtle import getscreen
 import constants
 import yfinance as yf   
 import requests
@@ -52,7 +53,7 @@ def scrapeCompanyName(soup:BeautifulSoup) ->str:
 def getScrapingURL(ticker:str)->str:
     """Finds exchanger ending for scraping on google finance. Example:\n 
     >>> getScrapingURL('MSFT')
-    >>> 'https://www.google.com/finance/quote/MSFT:NASDAQ'"""
+    >>> https://www.google.com/finance/quote/MSFT:NASDAQ"""
     data = requests.get(f'{constants.GOOGLE_FINANCE_URL}{ticker}', headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, 'lxml')
     parentList = soup.find("ul", {"class":["sbnBtf xJvDsc ANokyb"]})
@@ -144,10 +145,9 @@ EBITDA\n
 Effective tax rate"""
     incomeStatement = {}
     incomeStatementTable = soup.find_all("table", {"class":"slpEwd"})[constants.INCOME_STATEMENT_INDEX]
-    rows:list[Tag] = incomeStatementTable.find_all("tr", {"class":"roXhBd"})[1:]
+    rows = incomeStatementTable.find_all("tr", {"class":"roXhBd"})[1:]
     for row in rows:
         label = row.find("div", {"class":"rsPbEe"}).text
-        print(label)
         value = row.find("td", {"class":"QXDnM"}).text
         try:
             yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
@@ -168,10 +168,9 @@ Return on assets\n
 Return on capital"""
     balanceSheet = {}
     balanceSheetTable = soup.find_all("table", {"class":"slpEwd"})[constants.BALANCE_SHEET_INDEX]
-    rows:list[Tag] = balanceSheetTable.find_all("tr", {"class":"roXhBd"})[1:]
+    rows = balanceSheetTable.find_all("tr", {"class":"roXhBd"})[1:]
     for row in rows:
         label = row.find("div", {"class":"rsPbEe"}).text
-        print(label)
         value = row.find("td", {"class":"QXDnM"}).text
         try:
             yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
@@ -190,10 +189,9 @@ Net change in cash\n
 Free cash flow"""
     CashFlow = {}
     CashFlowTable = soup.find_all("table", {"class":"slpEwd"})[constants.CASH_FLOW_INDEX]
-    rows:list[Tag] = CashFlowTable.find_all("tr", {"class":"roXhBd"})[1:]
+    rows = CashFlowTable.find_all("tr", {"class":"roXhBd"})[1:]
     for row in rows:
         label = row.find("div", {"class":"rsPbEe"}).text
-        print(label)
         value = row.find("td", {"class":"QXDnM"}).text
         try:
             yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
@@ -203,6 +201,7 @@ Free cash flow"""
     return CashFlow
 
 def main():
+    print(getScrapingURL("msft"))
     print("We out")
     data = requests.get(getScrapingURL("msft"), headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, "lxml")

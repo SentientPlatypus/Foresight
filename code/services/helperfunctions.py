@@ -6,22 +6,22 @@ import json
 
 
 def isTickerValid(ticker:str) -> bool:
-    data = requests.get(constants.API_URL + constants.VALIDATE_TICKER_ENDING + ticker).text
+    data = requests.get(constants.API_URL + constants.VALIDATE_TICKER_ENDING + ticker, headers=constants.REQ_HEADER).text
     print(data)
     return data == constants.TRUE
 
 print(isTickerValid("msft"))
 
 def getInfo(ticker:str) -> dict:
-    data = requests.get(constants.API_URL + constants.GET_TICKER_INFO_ENDING + ticker).json()
+    data = requests.get(constants.API_URL + constants.GET_TICKER_INFO_ENDING + ticker, headers=constants.REQ_HEADER).json()
     return data
 
 def getFinancials(ticker:str) -> dict:
-    data = requests.get(constants.API_URL + constants.GET_FINANCIALS_ENDING + ticker).json()
+    data = requests.get(constants.API_URL + constants.GET_FINANCIALS_ENDING + ticker, headers=constants.REQ_HEADER).json()
     return data
 
 def getNews(ticker:str) ->list[dict]:
-    data = requests.get(constants.API_URL + constants.GET_NEWS_ENDING + ticker).json()
+    data = requests.get(constants.API_URL + constants.GET_NEWS_ENDING + ticker, headers=constants.REQ_HEADER).json()
     return data
 
 def human_format(num):

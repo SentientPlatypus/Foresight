@@ -27,7 +27,7 @@ app = createApp()
 @app.route("/isTickerValid/<string:ticker>")
 def isTickerValid(ticker:str) -> str:
     """Checks if ticker is valid."""
-    data = requests.get(f"{constants.GOOGLE_FINANCE_URL}{ticker}").text
+    data = requests.get(f"{constants.GOOGLE_FINANCE_URL}{ticker}", headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, "lxml")
     if soup.find("ul", {"class":constants.OPTIONS_LIST_CLASSES}):
         return constants.TRUE
@@ -57,6 +57,7 @@ def getInfo(ticker:str) -> dict:
 @app.route("/getFinancials/<string:ticker>")
 def getFinancials(ticker:str) -> dict:
     scrapingURL = getScrapingURL(ticker)
+    print(scrapingURL)
     data = requests.get(scrapingURL, headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, "lxml")
     financials = {
@@ -69,7 +70,10 @@ def getFinancials(ticker:str) -> dict:
 
 @app.route("/getNews/<string:ticker>")
 def getNews(ticker:str) -> dict:
-    return scrapeNews(getScrapingURL(ticker))
+    scrapingURL = getScrapingURL(ticker=ticker)
+    data = requests.get(scrapingURL, headers=constants.REQ_HEADER).text
+    soup = BeautifulSoup(data, "lxml")
+    return scrapeNews(soup)
 
 @app.route("/")
 def home():

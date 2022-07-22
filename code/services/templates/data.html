@@ -59,73 +59,19 @@
         </div>
         <div class="cardLayout">
             <div class="cards">
+                {% for key, value in financials['incomeStatement'].items()%}
                 <div class="card" id="revenue">
                     <h3 class="cardTitle">
-                        Total Revenue
+                        {{key}}
                     </h3>
                     <div class="cardValue">
-                        <h2>{{info['totalRevenue']['value']}}</h2>
+                        <h2>{{value['value']}}</h2>
                         <p class="change">
-                            {{info['totalRevenue']['change']}}
+                            {{value['change']}}
                         </p>
                     </div>
                 </div>
-                <div class="card" id="Expense">
-                    <h3 class="cardTitle">
-                        Expense
-                    </h3>
-                    <div class="cardValue">
-                        <h2>{{info['expense']['value']}}</h2>
-                        <p class="change">
-                            {{info['expense']['change']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="card" id="netIncome">
-                    <h3 class="cardTitle">
-                        Net income
-                    </h3>
-                    <div class="cardValue">
-                        <h2>{{info['netIncome']['value']}}</h2>
-                        <p class="change">
-                            {{info['netIncome']['change']}}
-                        </p>
-                    </div>
-
-                </div>
-                <div class="card" id="Earnings/Share">
-                    <h3 class="cardTitle">
-                        Revenue/Share
-                    </h3>
-                    <div class="cardValue">
-                        <h2>{{info['revenuePerShare']['value']}}</h2>
-                        <p class="change">
-                            {{info['revenuePerShare']['change']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="card" id="EBITDA">
-                    <h3 class="cardTitle">
-                        EBITDA
-                    </h3>
-                    <div class="cardValue">
-                        <h2>{{info['ebitda']['value']}}</h2>
-                        <p class="change">
-                            {{info['ebitda']['change']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="card" id="ETR">
-                    <h3 class="cardTitle">
-                        Effective Tax Rate
-                    </h3>
-                    <div class="cardValue">
-                        <h2>{{info['effectiveTaxRate']['value']}}</h2>
-                        <p class="change">
-                            {{info['effectiveTaxRate']['change']}}
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="news">
                 <h3>News</h3>
