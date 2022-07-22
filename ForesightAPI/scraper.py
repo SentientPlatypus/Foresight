@@ -9,15 +9,29 @@ import re
 
 
 def getPercentChange(current, previous) ->str:
+    """percent difference. Example:\n
+    >>> getPriceChangeStr(12, 10))\n
+    >>> '20.0%'"""
     return "%.3g"%((current - previous)/previous * 100) + "%"
 
 
 def getPriceChangeStr(current, open, label:str) ->str:
+    """Gves string that shows difference, and percent difference along wth a label.. Example:\n
+    >>> getPriceChangeStr(12, 10, 'difference'))\n
+    >>> '+2.00 (20.0%) difference'"""
     diff = "+%.3g"%(current-open) if (current-open) >= 0 else "%.3g"%(current-open)
     return diff + " (" + getPercentChange(current, open) + ") "+label
 
 
+def scrapeTickerFromUrl(url:str) ->str:
+    """Scrapes the ticker part from the Url. For example:\n
+    >>> scrapeTickerFromUrl('https://www.google.com/finance/quote/GOOGL:NASDAQ')\n
+    >>> 'GOOGL'"""
+
 def human_format(num):
+    """Gives numbers human format. Example:\n
+    >>> human_format(272900238)\n
+    >>> '273M'"""
     num = float('{:.3g}'.format(num))
     magnitude = 0
     while abs(num) >= 1000:
@@ -36,7 +50,9 @@ def scrapeCompanyName(soup:BeautifulSoup) ->str:
   
 
 def getScrapingURL(ticker:str)->str:
-    "Finds exchanger ending for scraping on google finance. ex result: https://www.google.com/finance/quote/MSFT:NASDAQ"
+    """Finds exchanger ending for scraping on google finance. Example:\n 
+    >>> getScrapingURL('MSFT')
+    >>> 'https://www.google.com/finance/quote/MSFT:NASDAQ'"""
     data = requests.get(f'{constants.GOOGLE_FINANCE_URL}{ticker}', headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, 'lxml')
     parentList = soup.find("ul", {"class":["sbnBtf xJvDsc ANokyb"]})

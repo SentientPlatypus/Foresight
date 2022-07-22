@@ -16,6 +16,10 @@ def getInfo(ticker:str) -> dict:
     data = requests.get(constants.API_URL + constants.GET_TICKER_INFO_ENDING + ticker).json()
     return data
 
+def getFinancials(ticker:str) -> dict:
+    data = requests.get(constants.API_URL + constants.GET_FINANCIALS_ENDING + ticker).json()
+    return data
+
 def getNews(ticker:str) ->list[dict]:
     data = requests.get(constants.API_URL + constants.GET_NEWS_ENDING + ticker).json()
     return data

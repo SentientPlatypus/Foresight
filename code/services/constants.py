@@ -9,6 +9,7 @@ API_URL          = "https://ForesightAPI.sentientplatypu.repl.co"
 VALIDATE_TICKER_ENDING= "/isTickerValid/"
 GET_TICKER_INFO_ENDING= "/getInfo/"
 GET_NEWS_ENDING= "/getNews/"
+GET_FINANCIALS_ENDING= "/getFinancials/"
 
 EXAMPLE_INFO = {'52WeekChange': -0.08975369,
  'SandP52WeekChange': -0.11385685,

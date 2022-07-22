@@ -38,8 +38,6 @@ def isTickerValid(ticker:str) -> str:
 def getInfo(ticker:str) -> dict:
     """Prerequisite is that ticker must be valid. Use isTickerValid for this."""
     tickerObj = yf.Ticker(ticker)
-    tickerObjInfo = tickerObj.info
-
     scrapingURL = getScrapingURL(ticker)
     data = requests.get(scrapingURL, headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, "lxml")
@@ -52,7 +50,7 @@ def getInfo(ticker:str) -> dict:
         },
         "marketStatus" : scrapeMarketStatus(soup),
         "companyDesc" : scrapeCompanyDesc(soup),
-        "companyLogoUrl" : tickerObjInfo["logo_url"]
+        "companyLogoUrl" : tickerObj.info["logo_url"]
     }
     return info_we_need
 

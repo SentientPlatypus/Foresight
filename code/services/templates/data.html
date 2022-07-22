@@ -33,13 +33,13 @@
         <div class="container">
             <div class="mainVisual">
                 <div class="priceInfo">
-                    <h2>{{t['currentValue']['value']}}</h2>
+                    <h2>{{info['currentValue']['value']}}</h2>
                     <div class="scheduleAndChange">
                         <p class="change">
-                            {{t['currentValue']['change']}}
+                            {{info['currentValue']['change']}}
                         </p>
                         <p>
-                            {{t['marketStatus']}}
+                            {{info['marketStatus']}}
                         </p>
                     </div>
                 </div>
@@ -49,11 +49,11 @@
             </div>
             <div class="companyInfo">
                 <div class="nameAndLogo">
-                    <h1>{{t['companyName']}}</h1>
-                    <img class="companyLogo" src="{{t['companyLogoUrl']}}" alt="{{t['companyName']}}">
+                    <h1>{{info['companyName']}}</h1>
+                    <img class="companyLogo" src="{{info['companyLogoUrl']}}" alt="{{info['companyName']}}">
                 </div>
                 <p class="companyDesc">
-                    {{t['companyDesc']}}
+                    {{info['companyDesc']}}
                 </p>
             </div>
         </div>
@@ -64,9 +64,9 @@
                         Total Revenue
                     </h3>
                     <div class="cardValue">
-                        <h2>{{t['totalRevenue']['value']}}</h2>
+                        <h2>{{info['totalRevenue']['value']}}</h2>
                         <p class="change">
-                            {{t['totalRevenue']['change']}}
+                            {{info['totalRevenue']['change']}}
                         </p>
                     </div>
                 </div>
@@ -75,9 +75,9 @@
                         Expense
                     </h3>
                     <div class="cardValue">
-                        <h2>{{t['expense']['value']}}</h2>
+                        <h2>{{info['expense']['value']}}</h2>
                         <p class="change">
-                            {{t['expense']['change']}}
+                            {{info['expense']['change']}}
                         </p>
                     </div>
                 </div>
@@ -86,9 +86,9 @@
                         Net income
                     </h3>
                     <div class="cardValue">
-                        <h2>{{t['netIncome']['value']}}</h2>
+                        <h2>{{info['netIncome']['value']}}</h2>
                         <p class="change">
-                            {{t['netIncome']['change']}}
+                            {{info['netIncome']['change']}}
                         </p>
                     </div>
 
@@ -98,9 +98,9 @@
                         Revenue/Share
                     </h3>
                     <div class="cardValue">
-                        <h2>{{t['revenuePerShare']['value']}}</h2>
+                        <h2>{{info['revenuePerShare']['value']}}</h2>
                         <p class="change">
-                            {{t['revenuePerShare']['change']}}
+                            {{info['revenuePerShare']['change']}}
                         </p>
                     </div>
                 </div>
@@ -109,9 +109,9 @@
                         EBITDA
                     </h3>
                     <div class="cardValue">
-                        <h2>{{t['ebitda']['value']}}</h2>
+                        <h2>{{info['ebitda']['value']}}</h2>
                         <p class="change">
-                            {{t['ebitda']['change']}}
+                            {{info['ebitda']['change']}}
                         </p>
                     </div>
                 </div>
@@ -120,9 +120,9 @@
                         Effective Tax Rate
                     </h3>
                     <div class="cardValue">
-                        <h2>{{t['effectiveTaxRate']['value']}}</h2>
+                        <h2>{{info['effectiveTaxRate']['value']}}</h2>
                         <p class="change">
-                            {{t['effectiveTaxRate']['change']}}
+                            {{info['effectiveTaxRate']['change']}}
                         </p>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
             <div class="news">
                 <h3>News</h3>
                 <div class="scrollable">
-                    {% for a in newsList["articles"]%}
+                    {% for a in newsLisinfo["articles"]%}
                     <a href="{{a['link']}}">
                             <div class="article">
                                 <p class="publisher">

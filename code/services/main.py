@@ -117,12 +117,11 @@ def tickerNotFound(InvalidTicker):
 
 @app.route("/data/<string:companyTicker>")
 def data(companyTicker:str):
-    tickerObjInfo = helperfunctions.getInfo(companyTicker)
-    news = helperfunctions.getNews(companyTicker)
     return render_template(
         "data.html", 
-        t = tickerObjInfo,
-        newsList = news
+        info = helperfunctions.getInfo(companyTicker),
+        financials = helperfunctions.getFinancials(companyTicker),
+        newsList = helperfunctions.getNews(companyTicker)
     )
 
 @app.route("/ContactMe/HandleData", methods=['POST'])
