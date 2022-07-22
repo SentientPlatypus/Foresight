@@ -52,33 +52,22 @@ def getInfo(ticker:str) -> dict:
         },
         "marketStatus" : scrapeMarketStatus(soup),
         "companyDesc" : scrapeCompanyDesc(soup),
-        "companyLogoUrl" : tickerObjInfo["logo_url"],
-        "totalRevenue": {
-            "value":human_format(tickerObjInfo["totalRevenue"]),
-            "change": "+18.35%"
-        },
-        "revenuePerShare" : {
-            "value":human_format(tickerObjInfo["revenuePerShare"]),
-            "change":"+13.7%"
-        },
-        "ebitda" : {
-            "value":human_format(tickerObjInfo["ebitda"]),
-            "change":"+20.78%"
-        },
-        "expense" : {
-            "value": human_format(tickerObjInfo["totalRevenue"] - tickerObjInfo["netIncomeToCommon"]),
-            "change": "+15.22%"
-        },
-        "netIncome" : {
-            "value":human_format(tickerObjInfo["netIncomeToCommon"]),
-            "change": "+8.22"
-        },
-        "effectiveTaxRate" : {
-            "value":"17.15%",
-            "change": "-"
-        }
+        "companyLogoUrl" : tickerObjInfo["logo_url"]
     }
     return info_we_need
+
+@app.route("/getFinancials/<string:ticker>")
+def getFinancials(ticker:str) -> dict:
+    scrapingURL = getScrapingURL(ticker)
+    data = requests.get(scrapingURL, headers=constants.REQ_HEADER).text
+    soup = BeautifulSoup(data, "lxml")
+    financials = {
+        "incomeStatement": scrapeIncomeStatement(soup),
+        "balanceSheet":scrapeBalanceSheet(soup),
+        "cashFlow":scrapeCashFlow(soup)
+    }
+    return financials
+
 
 @app.route("/getNews/<string:ticker>")
 def getNews(ticker:str) -> dict:

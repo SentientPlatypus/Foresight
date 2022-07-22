@@ -117,13 +117,80 @@ def scrapePrice(soup:BeautifulSoup):
 def scrapePrevClose(soup:BeautifulSoup):
     return float(re.sub("[$|,]","",soup.find("div", {"class":"P6K39c"}).text))
 
+def scrapeIncomeStatement(soup:BeautifulSoup) ->dict:
+    """current keys:\n
+Revenue\n
+Operating expense\n
+Net income\n
+Net profit margin\n
+Earnings per share\n
+EBITDA\n
+Effective tax rate"""
+    incomeStatement = {}
+    incomeStatementTable = soup.find_all("table", {"class":"slpEwd"})[constants.INCOME_STATEMENT_INDEX]
+    rows:list[Tag] = incomeStatementTable.find_all("tr", {"class":"roXhBd"})[1:]
+    for row in rows:
+        label = row.find("div", {"class":"rsPbEe"}).text
+        print(label)
+        value = row.find("td", {"class":"QXDnM"}).text
+        try:
+            yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
+        except:
+            yearChange = row.find("td",{"class":"gEUVJe"}).text
+        incomeStatement[label] = {"value":value, "change":yearChange}
+    return incomeStatement
 
+def scrapeBalanceSheet(soup:BeautifulSoup) ->dict:
+    """current keys:\n
+Cash and short-term investments\n
+Total assets\n
+Total liabilities\n
+Total equity\n
+Shares outstanding\n
+Price to book\n
+Return on assets\n
+Return on capital"""
+    balanceSheet = {}
+    balanceSheetTable = soup.find_all("table", {"class":"slpEwd"})[constants.BALANCE_SHEET_INDEX]
+    rows:list[Tag] = balanceSheetTable.find_all("tr", {"class":"roXhBd"})[1:]
+    for row in rows:
+        label = row.find("div", {"class":"rsPbEe"}).text
+        print(label)
+        value = row.find("td", {"class":"QXDnM"}).text
+        try:
+            yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
+        except:
+            yearChange = row.find("td",{"class":"gEUVJe"}).text
+        balanceSheet[label] = {"value":value, "change":yearChange}
+    return balanceSheet
+
+def scrapeCashFlow(soup:BeautifulSoup) ->dict:
+    """current keys:\n
+Net income\n
+Cash from operations\n
+Cash from investing\n
+Cash from financing\n
+Net change in cash\n
+Free cash flow"""
+    CashFlow = {}
+    CashFlowTable = soup.find_all("table", {"class":"slpEwd"})[constants.CASH_FLOW_INDEX]
+    rows:list[Tag] = CashFlowTable.find_all("tr", {"class":"roXhBd"})[1:]
+    for row in rows:
+        label = row.find("div", {"class":"rsPbEe"}).text
+        print(label)
+        value = row.find("td", {"class":"QXDnM"}).text
+        try:
+            yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
+        except:
+            yearChange = row.find("td",{"class":"gEUVJe"}).text
+        CashFlow[label] = {"value":value, "change":yearChange}
+    return CashFlow
 
 def main():
     print("We out")
     data = requests.get(getScrapingURL("msft"), headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, "lxml")
-    print(scrapePrice(soup))
+    pprint.pprint(scrapeCashFlow(soup))
 
 if __name__ == "__main__":
     main()
