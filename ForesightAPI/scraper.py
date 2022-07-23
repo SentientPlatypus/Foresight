@@ -129,10 +129,10 @@ def scrapeCompanyDesc(soup:BeautifulSoup) ->str:
     return re.sub("\. Wikipedia$","",soup.find("div", {"class":"bLLb2d"}).text)
 
 def scrapePrice(soup:BeautifulSoup):
-    return float(re.sub("[$|,]","",soup.find("div", {"class":["YMlKec fxKbKc"]}).text))
+    return soup.find("div", {"class":["YMlKec fxKbKc"]}).text
 
 def scrapePrevClose(soup:BeautifulSoup):
-    return float(re.sub("[$|,]","",soup.find("div", {"class":"P6K39c"}).text))
+    return soup.find("div", {"class":"P6K39c"}).text
 
 def scrapeIncomeStatement(soup:BeautifulSoup) ->dict:
     """current keys:\n
@@ -153,6 +153,8 @@ Effective tax rate"""
             yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
         except:
             yearChange = row.find("td",{"class":"gEUVJe"}).text
+        if yearChange[0] not in ["—", "-"]:
+            yearChange = "+" + yearChange
         incomeStatement[label] = {"value":value, "change":yearChange}
     return incomeStatement
 
@@ -176,6 +178,8 @@ Return on capital"""
             yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
         except:
             yearChange = row.find("td",{"class":"gEUVJe"}).text
+        if yearChange[0] not in ["—", "-"]:
+            yearChange = "+" + yearChange
         balanceSheet[label] = {"value":value, "change":yearChange}
     return balanceSheet
 
@@ -197,15 +201,36 @@ Free cash flow"""
             yearChange = row.find("span",{"class":["JwB6zf", "CnzlGc"]}).text
         except:
             yearChange = row.find("td",{"class":"gEUVJe"}).text
+        if yearChange[0] not in ["—", "-"]:
+            yearChange = "+" + yearChange
         CashFlow[label] = {"value":value, "change":yearChange}
     return CashFlow
+
+def scrapeCompanyWebsite(soup:BeautifulSoup) ->str:
+    "Returns the URL for the company website"
+    container = soup.find("div", {"class":"v5gaBd Yickn"})
+    rows = container.find_all("div", {"class":"gyFHrc"})
+    for row in rows:
+        try:
+            if row.find("div", {"class":"mfs7Fc"}).text == "Website":
+                return row.find("a", {"class":"tBHE4e"})["href"]
+        except:
+            pass
+    return "NO URL"
+
+def scrapeCompanyLogo(companyWebsite:str):
+    "Returns link to company logo given company website url"
+    return constants.LOGO_CLEARBIT_URL + companyWebsite
+
+
 
 def main():
     print(getScrapingURL("msft"))
     print("We out")
     data = requests.get(getScrapingURL("msft"), headers=constants.REQ_HEADER).text
     soup = BeautifulSoup(data, "lxml")
-    pprint.pprint(scrapeCashFlow(soup))
+    print(scrapeIncomeStatement(soup))
+    # pprint.pprint(scrapeCompanyLogo(scrapeCompanyWebsite(soup)))
 
 if __name__ == "__main__":
     main()

@@ -50,7 +50,7 @@ def getInfo(ticker:str) -> dict:
         },
         "marketStatus" : scrapeMarketStatus(soup),
         "companyDesc" : scrapeCompanyDesc(soup),
-        "companyLogoUrl" : tickerObj.info["logo_url"]
+        "companyLogoUrl" : scrapeCompanyLogo(scrapeCompanyWebsite(soup))
     }
     return info_we_need
 
