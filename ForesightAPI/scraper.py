@@ -128,6 +128,12 @@ def scrapeNews(soup:BeautifulSoup) -> dict:
 def scrapeCompanyDesc(soup:BeautifulSoup) ->str:
     return re.sub("\. Wikipedia$","",soup.find("div", {"class":"bLLb2d"}).text)
 
+def getFloat(num:str) ->float:
+    """Returns the float of a number containing symbols
+    >>> getFloat('$262.27')
+    >>> 262.27"""
+    return float(re.sub("[$,]", "", num))
+
 def scrapePrice(soup:BeautifulSoup):
     return soup.find("div", {"class":["YMlKec fxKbKc"]}).text
 

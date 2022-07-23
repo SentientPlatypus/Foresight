@@ -247,9 +247,17 @@ img.companyLogo {
 .card {
     background: #343434;
     border-radius: 35px;
+    text-align: center;
+    justify-content: center;
+    vertical-align: center;
     width: 250px;
     height: 140px;
     margin: 2vmin;
+}
+
+.card h3 {
+    height: 100%;
+    vertical-align: center;
 }
 
 .scrollable {
@@ -301,6 +309,81 @@ img.companyLogo {
 
 
 
+.popup {
+    width: 50vw;
+    height: auto;
+    background: #262626;
+    border-radius: 20px;
+    position: fixed;
+    top: 10vh;
+    left: 25vw;
+    padding: 1.5%;
+}
+
+.background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+.popupHead {
+    display: flex;
+    vertical-align: top;
+}
+
+.popupHead h3 {
+    width: 80%;
+}
+
+.popup table {
+    width: 94%;
+    height: auto;
+}
+
+.popup table tr {
+    padding-bottom: 7%;
+}
+
+th {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    height: 5vh;
+    vertical-align: center;
+    color: #707070;
+    text-align: right;
+}
+
+td {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    height: 5vh;
+    vertical-align: center;
+    color: #FFFFFF;
+    border-bottom: 1px solid #707070;
+    text-align: right;
+}
+
+td.label, th.label {
+    text-align: left;
+}
+
+
+
+td.change.positive {
+    color: #00FF19;
+}
+
+td.change.negative {
+    color: #FF0000;
+}
 
 
 

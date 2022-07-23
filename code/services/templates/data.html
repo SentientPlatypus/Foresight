@@ -59,19 +59,21 @@
         </div>
         <div class="cardLayout">
             <div class="cards">
-                {% for key, value in financials['incomeStatement'].items()%}
-                <div class="card" id="revenue">
+                <div class="card" id="incomeStatement">
                     <h3 class="cardTitle">
-                        {{key}}
+                        Income Statement
                     </h3>
-                    <div class="cardValue">
-                        <h2>{{value['value']}}</h2>
-                        <p class="change">
-                            {{value['change']}}
-                        </p>
-                    </div>
                 </div>
-                {% endfor %}
+                <div class="card" id="balanceSheet">
+                    <h3 class="cardTitle">
+                        Balance Sheet
+                    </h3>
+                </div>
+                <div class="card" id="cashFlow">
+                    <h3 class="cardTitle">
+                        Cash Flow
+                    </h3>
+                </div>
             </div>
             <div class="news">
                 <h3>News</h3>
@@ -90,6 +92,28 @@
                     {%endfor%}
                 </div>
             </div>
+        </div>
+        <div class="background">
+        </div>
+        <div class="popup">
+            <div class="popupHead">
+                <h3>
+                    Title
+                </h3>
+                <i class="fa-solid fa-x"></i>
+            </div>
+            <table>
+                <tr>
+                    <th class="label">(USD)</th>
+                    <th>Value</th>
+                    <th>Y/Y change</th>
+                </tr>
+                <tr>
+                    <td class="label">Revenue</td>
+                    <td>49.36B</td>
+                    <td class="change">+18.35%</td>
+                </tr>
+            </table>
         </div>
         <script src="{{ url_for('static',filename='js/changeColor.js') }}"></script>
         <footer>
