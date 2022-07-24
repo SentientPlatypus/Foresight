@@ -15,6 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js" integrity="sha512-5/OHwmQzDSBS0Ous4/hlYoWLHd06/d2r7LdKZQVBXOA6PvOqWVXtdboiLTU7lQTGyVoKVTNkwi0ol4gHGlw5ww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js" integrity="sha512-RvUydNGlqYJapy0t4AH8hDv/It+zKsv4wOQGb+iOnEfa6NnF2fzjXgRy+FDjSpMfC3sjokNUzsfYZaZ8QAwIxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{ url_for('static',filename='js/popupHandler.js') }}"></script>
     </head>
     <body class="preload">
         <div id="loader-wrapper">
@@ -59,17 +60,17 @@
         </div>
         <div class="cardLayout">
             <div class="cards">
-                <div class="card" id="incomeStatement">
+                <div class="card" id="incomeStatement" onclick="openThePopup(possibleActions.INCOME_STATEMENT)">
                     <h3 class="cardTitle">
                         Income Statement
                     </h3>
                 </div>
-                <div class="card" id="balanceSheet">
+                <div class="card" id="balanceSheet" onclick="openThePopup(possibleActions.BALANCE_SHEET)">
                     <h3 class="cardTitle">
                         Balance Sheet
                     </h3>
                 </div>
-                <div class="card" id="cashFlow">
+                <div class="card" id="cashFlow" onclick="openThePopup(possibleActions.CASH_FLOW)">
                     <h3 class="cardTitle">
                         Cash Flow
                     </h3>
@@ -93,25 +94,22 @@
                 </div>
             </div>
         </div>
-        <div class="background">
+        <div class="background hidden" id="background">
         </div>
-        <div class="popup">
+        <div class="popup hidden" id="popup">
             <div class="popupHead">
                 <h3>
                     Title
                 </h3>
-                <i class="fa-solid fa-x"></i>
+                <div class="xContainer">
+                    <i class="fa-solid fa-x X" onclick="closeThePopup()"></i>
+                </div>
             </div>
             <table>
                 <tr>
                     <th class="label">(USD)</th>
                     <th>Value</th>
                     <th>Y/Y change</th>
-                </tr>
-                <tr>
-                    <td class="label">Revenue</td>
-                    <td>49.36B</td>
-                    <td class="change">+18.35%</td>
                 </tr>
             </table>
         </div>

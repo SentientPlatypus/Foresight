@@ -3,9 +3,7 @@ from flask_mail import Mail, Message
 import smtplib, ssl
 from threading import Thread
 import yfinance as yf
-import requests
 import constants
-import csv
 import helperfunctions
 import pprint
 

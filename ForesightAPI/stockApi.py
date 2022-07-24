@@ -10,6 +10,7 @@ import constants
 import csv
 from bs4 import BeautifulSoup
 from scraper import *
+from flask_cors import CORS
 
 context = ssl.create_default_context()
 
@@ -23,6 +24,7 @@ def createApp():
 
 app = createApp()
 
+CORS(app)
 
 @app.route("/isTickerValid/<string:ticker>")
 def isTickerValid(ticker:str) -> str:

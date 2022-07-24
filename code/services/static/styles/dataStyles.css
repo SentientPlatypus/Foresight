@@ -250,9 +250,10 @@ img.companyLogo {
     text-align: center;
     justify-content: center;
     vertical-align: center;
-    width: 250px;
+    width: 200px;
     height: 140px;
     margin: 2vmin;
+    cursor: pointer;
 }
 
 .card h3 {
@@ -320,6 +321,17 @@ img.companyLogo {
     padding: 1.5%;
 }
 
+.X {
+    color: white;
+    cursor: pointer;
+}
+
+.xContainer {
+    width: 15%;
+    text-align: center;
+    padding-top: 2.5vh;
+}
+
 .background {
     position: fixed;
     top: 0px;
@@ -336,7 +348,7 @@ img.companyLogo {
 }
 
 .popupHead h3 {
-    width: 80%;
+    width: 85%;
 }
 
 .popup table {
@@ -346,29 +358,27 @@ img.companyLogo {
 
 .popup table tr {
     padding-bottom: 7%;
+
 }
 
-th {
+th, td {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    height: 5vh;
+    font-size: 2vmin;
+    height: 5vmin;
     vertical-align: center;
+}
+
+th {
     color: #707070;
     text-align: right;
 }
 
 td {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    height: 5vh;
-    vertical-align: center;
     color: #FFFFFF;
-    border-bottom: 1px solid #707070;
     text-align: right;
+    border-bottom: 1px solid #707070;
 }
 
 td.label, th.label {
@@ -386,7 +396,9 @@ td.change.negative {
 }
 
 
-
+.hidden {
+    display: none;
+}
 
 
 

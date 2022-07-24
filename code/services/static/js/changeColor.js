@@ -1,31 +1,18 @@
 function changeColor() {
     let priceChange = document.getElementsByClassName("change");
-    console.log(priceChange);
-    for (key in priceChange)
+    if (priceChange)
     {
-        firstLetter = String(priceChange[key].innerText.substr(0,1))
-        console.log(firstLetter)
-        if (firstLetter == "-")
+        for (key in priceChange)
         {
-            console.log("Got here")
-            if (!("negative" in priceChange[key].classList))
+            firstLetter = String(priceChange[key].innerText.substr(0,1))
+            if (firstLetter == "-")
             {
                 priceChange[key].classList.add("negative");
-            }
-            if ("positive" in priceChange[key].classList)
-            {
                 priceChange[key].classList.remove("positive");
             }
-        }
-        else
-        {
-            console.log("Got here2")
-            if (!("positive" in priceChange[key].classList))
+            else
             {
                 priceChange[key].classList.add("positive");
-            }
-            if ("negative" in priceChange[key].classList)
-            {
                 priceChange[key].classList.remove("negative");
             }
         }
