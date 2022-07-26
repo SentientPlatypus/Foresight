@@ -30,7 +30,6 @@ function openThePopup(action) {
     {
         dictionary = httpGet("/getFinancials/" + document.URL.split("/").pop()).incomeStatement;
         titleStr = "Income Statement"
-
     } else if (action == 1)
     {
         dictionary = httpGet("/getFinancials/" + document.URL.split("/").pop()).balanceSheet;

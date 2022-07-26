@@ -19,4 +19,13 @@ function changeColor() {
     }
 };
 
+$( "div.card" ).hover(
+    function(){
+        $(this).children().css("color", "white")
+    },
+    function(){
+        $(this).children().css("color", "#707070")
+    },
+);
+
 changeColor();

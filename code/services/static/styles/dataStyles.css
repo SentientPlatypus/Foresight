@@ -254,11 +254,25 @@ img.companyLogo {
     height: 140px;
     margin: 2vmin;
     cursor: pointer;
+    transition: all 0.4s;
 }
+@media (min-width: 1391px)
+{
+    .card:hover {
+        width: 240px;
+    }
+}
+
+
 
 .card h3 {
     height: 100%;
     vertical-align: center;
+    transition: all 0.3s;
+}
+
+.white {
+    color: white;
 }
 
 .scrollable {
