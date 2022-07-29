@@ -21,6 +21,7 @@ function changeColor() {
 
 function changeTableStyle()
 {
+    console.log("CALLED TABLE STYLE CHANGE")
     let inputs = document.querySelectorAll("input.anychart-label-input")
     inputs.forEach(input => {
         $(input).css({

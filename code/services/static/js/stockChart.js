@@ -69,6 +69,7 @@ anychart.onDocumentReady(function () {
 
         // initiate chart drawing
         chart.draw();
+        console.log("finished draing chart")
         changeTableStyle()
       }
     );
