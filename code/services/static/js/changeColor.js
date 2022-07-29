@@ -19,6 +19,34 @@ function changeColor() {
     }
 };
 
+function changeTableStyle()
+{
+    let inputs = document.querySelectorAll("input.anychart-label-input")
+    inputs.forEach(input => {
+        $(input).css({
+            "background-color":"#1e1f1c",
+            "color":"white",
+            "font-family":"Open Sans",
+            "border":"none"
+        })
+    })
+
+    let buttons = document.querySelectorAll("button.anychart-button anychart-inline-block anychart-button-standard anychart-button-toggle anychart-button-collapse-right")
+    buttons.forEach(button => {
+        $(button).css({
+            "background-color":"#1e1f1c",
+            "color":"white",
+            "font-family":"Open Sans",
+            "border":"none"
+        })
+    })
+    let credits = document.querySelectorAll("div.anychart-credits")
+    $(credits[0]).css("display","none")
+}
+
+
+
+
 $( "div.card" ).hover(
     function(){
         $(this).children().css("color", "white")
@@ -28,4 +56,3 @@ $( "div.card" ).hover(
     },
 );
 
-changeColor();

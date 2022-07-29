@@ -16,6 +16,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js" integrity="sha512-5/OHwmQzDSBS0Ous4/hlYoWLHd06/d2r7LdKZQVBXOA6PvOqWVXtdboiLTU7lQTGyVoKVTNkwi0ol4gHGlw5ww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js" integrity="sha512-RvUydNGlqYJapy0t4AH8hDv/It+zKsv4wOQGb+iOnEfa6NnF2fzjXgRy+FDjSpMfC3sjokNUzsfYZaZ8QAwIxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{{ url_for('static',filename='js/popupHandler.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/changeColor.js') }}"></script>
+
+
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-exports.min.js"></script>
+    
+        <link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+        <link href="https://cdn.anychart.com/releases/8.11.0/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+    
+
     </head>
     <body class="preload">
         <div id="loader-wrapper">
@@ -30,7 +44,6 @@
                 <img class="logo" src="{{ url_for('static',filename='images/ForesightLogo.png') }}" alt="Foresight">
             </a>
         </div>
-        
         <div class="container">
             <div class="mainVisual">
                 <div class="priceInfo">
@@ -44,9 +57,9 @@
                         </p>
                     </div>
                 </div>
-                <div class="graph">
-
+                <div class="graph" id="graph">
                 </div>
+                <script src="{{url_for('static', filename='js/stockChart.js')}}"></script>
             </div>
             <div class="companyInfo">
                 <div class="nameAndLogo">
@@ -113,7 +126,6 @@
                 </tr>
             </table>
         </div>
-        <script src="{{ url_for('static',filename='js/changeColor.js') }}"></script>
         <footer>
             <div class="container">
                 <div class="row">
@@ -147,4 +159,7 @@
                 © 2022 Resonance
             </div>
         </footer>
+        <script>
+            changeColor()
+        </script>
     </body>
