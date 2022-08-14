@@ -108,6 +108,8 @@ def search():
     else:
         return redirect(url_for("tickerNotFound", InvalidTicker = ticker ))
 
+
+
 @app.route("/tickerNotFound/<string:InvalidTicker>", methods=["GET"])
 def tickerNotFound(InvalidTicker):
     args = request.args

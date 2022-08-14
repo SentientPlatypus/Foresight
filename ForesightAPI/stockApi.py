@@ -3,14 +3,16 @@ from tkinter import EW
 from flask import Flask,render_template, request, session, redirect, url_for
 import smtplib, ssl
 from threading import Thread
+import pandas as pd
 import requests
-from sqlalchemy import true
+from sqlalchemy import false, true
 import yfinance as yf
 import constants
 import csv
 from bs4 import BeautifulSoup
 from scraper import *
 from flask_cors import CORS
+from flask_jsonpify import jsonpify
 
 context = ssl.create_default_context()
 
@@ -67,6 +69,15 @@ def getFinancials(ticker:str) -> dict:
         "cashFlow":scrapeCashFlow(soup)
     }
     return financials
+
+
+@app.route("/getNumbers/<string:ticker>")
+def getNumbers(ticker:str):
+    df:pd.DataFrame = yf.download(ticker, period="max", progress=False)
+    csv_df = df.to_csv()
+    newStr = str(csv_df)
+    return newStr[42:]
+
 
 
 @app.route("/getNews/<string:ticker>")

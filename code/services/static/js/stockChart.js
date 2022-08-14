@@ -1,9 +1,10 @@
 anychart.onDocumentReady(function () {
     anychart.data.loadCsvFile(
-      'https://gist.githubusercontent.com/shacheeswadia/cd509e0b0c03964ca86ae7d894137043/raw/5f336c644ad61728dbac93026f3268b86b8d0680/teslaDailyData.csv',
+      'https://ForesightAPI.sentientplatypu.repl.co/getNumbers/' + document.URL.split("/").pop(),
       function (data) {
         // create data table on loaded data
         var dataTable = anychart.data.table();
+        csvSettings = {ignoreFirstRow: true, columnsSeparator: ",", rowsSeparator: " "};
         dataTable.addData(data);
   
         // map loaded data for the candlestick series
@@ -30,8 +31,12 @@ anychart.onDocumentReady(function () {
         thickness: 1
         });
 
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", (constants.API_URL + "/getInfo/" + document.URL.split("/").pop()), false ); // false for synchronous request
+        xmlHttp.send( null );
+        var name =  JSON.parse(xmlHttp.response).companyName;
 
-        var series = plot.candlestick(mapping)
+        var series = plot.candlestick(mapping).name(name)
 
 
         series.legendItem().iconType('rising-falling');
