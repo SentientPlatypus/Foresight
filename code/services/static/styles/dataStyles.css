@@ -184,14 +184,14 @@ p.title {
 
 .companyInfo {
     width: 30%;
-    height: 60vh;
+    height: auto;
     margin-left: 5%;
 }
 
 .companyDesc {
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 60%;
+    max-height: 35vh;
 }
 
 .nameAndLogo {
