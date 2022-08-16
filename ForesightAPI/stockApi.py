@@ -74,9 +74,11 @@ def getFinancials(ticker:str) -> dict:
 @app.route("/getNumbers/<string:ticker>")
 def getNumbers(ticker:str):
     df:pd.DataFrame = yf.download(ticker, period="max", progress=False)
+    df["OHLC"] = (df["Open"] + df["High"] + df["Low"] + df["Close"])/4
+    print(df)
     csv_df = df.to_csv()
     newStr = str(csv_df)
-    return newStr[42:]
+    return newStr[46:]
 
 
 

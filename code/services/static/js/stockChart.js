@@ -9,10 +9,11 @@ anychart.onDocumentReady(function () {
   
         // map loaded data for the candlestick series
         var mapping = dataTable.mapAs({
-          open: 1,
-          high: 2,
-          low: 3,
-          close: 4
+          "open": 1,
+          "high": 2,
+          "low": 3,
+          "close": 4,
+          "ohlc":7
         });
 
         var chart = anychart.stock();
