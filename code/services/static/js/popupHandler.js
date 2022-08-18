@@ -7,23 +7,26 @@ class possibleActions
 
 class constants
 {
-    static API_URL = "https://ForesightAPI.sentientplatypu.repl.co"
+    static API_URL = "https://Foresight-API.sentientplatypu.repl.co"
 }
 
-
+function toggleBackground() {
+    let background = document.getElementById("background")
+    $(background).toggleClass("hidden")
+}
 
 function closeThePopup() {
     let popup = document.getElementById("popup");
     let background = document.getElementById("background")
     $(popup).toggleClass("hidden");
-    $(background).toggleClass("hidden")
+    toggleBackground()
 }   
 
 function openThePopup(action) {
     let popup = document.getElementById("popup");
     let background = document.getElementById("background")
     $(popup).toggleClass("hidden");
-    $(background).toggleClass("hidden")
+    toggleBackground()
     let dictionary
     let titleStr
     if (action == 0)

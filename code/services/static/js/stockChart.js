@@ -1,6 +1,6 @@
 anychart.onDocumentReady(function () {
     anychart.data.loadCsvFile(
-      'https://ForesightAPI.sentientplatypu.repl.co/getNumbers/' + document.URL.split("/").pop(),
+      constants.API_URL+'/getNumbers/' + document.URL.split("/").pop(),
       function (data) {
         // create data table on loaded data
         var dataTable = anychart.data.table();
@@ -52,7 +52,7 @@ anychart.onDocumentReady(function () {
         // create scroller series with mapped data
         chart.scroller().candlestick(mapping);
         // set chart selected date/time range
-        chart.selectRange('2020-11-27', '2021-11-26');
+        // chart.selectRange('2020-11-27', '2021-11-26');
 
         // create range picker
         var rangePicker = anychart.ui.rangePicker();

@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dataStyles.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.1/css/all.css. ">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/loaderStyle.css') }}">
         <link rel="icon" href="{{ url_for('static',filename='images/LOGONOTEXT.png') }}">
         <script src="https://kit.fontawesome.com/1b4a129057.js" crossorigin="anonymous"></script>
 
@@ -33,9 +34,9 @@
     </head>
     <body class="preload">
         <div id="loader-wrapper">
-            <div id="loader">
-                <canvas id="loadingCanvas"></canvas>
-                <script type="module" src="{{url_for('static', filename='js/loadingCanvas.js')}}"></script>
+            <div id="loading-bar-spinner" class="spinner">
+                <div class="spinner-icon">
+                </div>
             </div>
         </div>
         <script src="{{url_for('static', filename='js/loader.js')}}"></script>

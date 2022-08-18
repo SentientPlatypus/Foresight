@@ -227,7 +227,7 @@ img.companyLogo {
 
     div.companyInfo{
         width: 100%;
-        height: 30vh;
+        height: auto;
         margin: 0px;
         margin-bottom: 5vh;
     }
