@@ -17,14 +17,12 @@ function toggleBackground() {
 
 function closeThePopup() {
     let popup = document.getElementById("popup");
-    let background = document.getElementById("background")
     $(popup).toggleClass("hidden");
     toggleBackground()
 }   
 
 function openThePopup(action) {
     let popup = document.getElementById("popup");
-    let background = document.getElementById("background")
     $(popup).toggleClass("hidden");
     toggleBackground()
     let dictionary

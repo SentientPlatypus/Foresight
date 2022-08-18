@@ -1,5 +1,5 @@
 $(window).on("load", function(){
-    $("#loader-wrapper").fadeOut("slow");
+    toggleLoader()
 })
 
 function toggleLoader()
