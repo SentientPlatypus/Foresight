@@ -15,10 +15,6 @@ body {
     min-height: 0;
 }
 
-.preload {
-    overflow: hidden;
-}
-
 
 ::-webkit-scrollbar {
     width: 7px;

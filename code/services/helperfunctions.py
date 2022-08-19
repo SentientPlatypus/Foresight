@@ -41,4 +41,4 @@ if __name__ == "__main__":
     # print(getFinancials("msft"))
     # print(getNews("msft"))
     # print(getInfo("msft"))
-    print(getNews("msft"))
+    print(getInfo("aple"))
