@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--{{ url_for('static',filename='styles/indexStyles.css') }}-->
+<!--C:\Users\trexx\Documents\PYTHON CODE LOL\PersonalWebsite\Personal-platypus-website\code\static\styles\indexStyles.css -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -6,10 +8,9 @@
         <title>Foresight</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/indexStyles.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tickerNotFoundStyles.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.1/css/all.css. ">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/loaderStyle.css') }}">
-
         <link rel="icon" href="{{ url_for('static',filename='images/LOGONOTEXT.png') }}">
         <script src="https://kit.fontawesome.com/1b4a129057.js" crossorigin="anonymous"></script>
 
@@ -27,42 +28,24 @@
             </div>
         </div>
         <script src="{{url_for('static', filename='js/loader.js')}}"></script>
-
-
         <div class="header">
             <a href="/home">
                 <img class="logo" src="{{ url_for('static',filename='images/ForesightLogo.png') }}" alt="Foresight">
             </a>
         </div>
-
-        <div class="HeroContainer">
-            <canvas id="mainCanvas"></canvas>
-            <script type="module" src="{{url_for('static', filename='js/mainCanvas.js')}}"></script>
-            
+        <div class="HeroContainer">            
             <div class="HeroHeader">
                 <h1 class="HeroText">
-                    Look into the future 
+                    Hi.
                 </h1>
                 <h3 class="HeroSub">
-                    Our machine-learning algorithms yield incredibly accurate predictions for the market.
+                    Please dont sue me.
                 </h3>
-                <form action="/search" method="get" id="searchForm" onsubmit="toggleLoader()">
-                    <input type="search" name="searchedTicker" placeholder="Ticker name" id="search" autocomplete="off">
-                </form>
+                <p>
+                    Although Foresight provides neural network generated predictions, we cannot guarantee its 100% accuracy. In short, We arent responsible for any losses.
+                </p>
             </div>
         </div>
-        <section id="about">
-            <div id="aboutContainer">
-                <img src="{{ url_for('static',filename='images/ForesightLogo.png') }}" alt="LOGO">
-                <div id="aboutText">
-                    <h2>About us.</h2>
-                    <p>
-                        We make stock analysis easy. Our AI generated models do the work for you. Jump right in.
-                    </p>
-                    <a href="/about"><button class="aboutButton">More on us</button></a>
-                </div>
-            </div>
-        </section>
         <footer>
             <div class="container">
                 <div class="row">
@@ -95,15 +78,5 @@
                 © 2022 <a href="https://https://resonance-website.sentientplatypu.repl.co">Resonance</a>
             </div>
         </footer>
-        <div class="background hidden" id="background">
-        </div>
         <script src="{{ url_for('static',filename='js/indexScrollmagic.js') }}"></script>
-
-
-
-
-
-
-
-
     </body>

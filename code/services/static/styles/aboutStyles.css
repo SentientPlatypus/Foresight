@@ -111,6 +111,7 @@ a.resonance {
     color: white;
     transition: all 0.3s;
     text-decoration: none;
+    border-bottom: 3px solid white;
 }
 
 a.resonance:hover {
@@ -178,3 +179,9 @@ section.panel {
     width: 70%;
 }
 
+.copyright a {
+    transition: all 0.3s;
+}
+.copyright a:hover {
+    color: #4545E6;
+}

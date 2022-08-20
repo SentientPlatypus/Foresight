@@ -467,7 +467,7 @@ footer li a {
 }
 
 footer li a:hover {
-    color: #4545E6;
+    color: #7ffff7;
 }
 
 
@@ -481,4 +481,11 @@ footer .copyright{
         flex-direction: column;
     }
     
+}
+
+.copyright a {
+    transition: all 0.3s;
+}
+.copyright a:hover {
+    color: #4545E6;
 }

@@ -495,3 +495,10 @@ footer .copyright{
     }
     
 }
+
+.copyright a {
+    transition: all 0.3s;
+}
+.copyright a:hover {
+    color: #4545E6;
+}
