@@ -11,10 +11,6 @@ body {
 
 
 
-.preload {
-    overflow: hidden;
-}
-
 
 ::-webkit-scrollbar {
     width: 7px;
