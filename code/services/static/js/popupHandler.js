@@ -22,9 +22,9 @@ function closeThePopup() {
 }   
 
 function openThePopup(action) {
+    toggleBackground()
     let popup = document.getElementById("popup");
     $(popup).toggleClass("hidden");
-    toggleBackground()
     let dictionary
     let titleStr
     if (action == 0)

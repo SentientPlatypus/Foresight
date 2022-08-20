@@ -1,8 +1,16 @@
 $(window).on("load", function(){
-    $("#loader-wrapper").fadeOut("slow");
+    toggleLoader()
 })
 
 function toggleLoader()
 {
-    $("#loader-wrapper").fadeIn("slow");
+    $("#loader-wrapper").fadeToggle("slow");
 }
+
+
+function toggleSpinny()
+{
+    $("#loading-bar-spinner").fadeToggle("slow");
+}
+
+

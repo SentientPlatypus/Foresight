@@ -343,6 +343,7 @@ img.companyLogo {
     background: #262626;
     border-radius: 20px;
     position: fixed;
+    z-index: 3;
     top: 10vh;
     left: 25vw;
     padding: 1.5%;
