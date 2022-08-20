@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Open+Sans&family=Raleway&family=Roboto+Mono&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #141414;
+    overflow-x: hidden;
+}
+
+* {
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #141414;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #7ffff7;
+    border-radius: 10px;
+    width: 20px;
+  }
+
+
+
+#loader {
+    z-index: 1001; /* anything higher than z-index: 1000 of .loader-section */
+}
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #141414;
+    z-index: 1000;
+    display:flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 22px;
+    color: white;
+}
+
+h2 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2em;
+    line-height: 2em;
+    color: #FFFFFF;
+}
+
+h3 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2em;
+    line-height: 1em;
+    color: #707070;
+}
+p {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #707070;
+}
+
+h1.HeroText {
+    margin-bottom: 0px;
+    justify-content: center;
+    text-align: center;
+    font-size: 4em;
+    line-height: 2em;
+    width: 100%;
+    position: relative;
+}
+
+
+h3.HeroSub{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    position:relative;
+    top: 0vh;
+}
+
+a.resonance {
+    color: white;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+a.resonance:hover {
+    color: #4545E6;
+}
+
+.HeroHeader {
+    margin-bottom: 0px;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    position:relative;
+}
+
+.header {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    top: 0px;
+    left: 0px;
+    height: 8vh;
+    background: #1e1f1c;
+    border-bottom: 1px solid #7ffff7;
+}
+
+
+.logo {
+    cursor: pointer;
+    width: auto;
+    height: 100%;
+}
+
+
+section.panel {
+    height: 110vh;
+    background-color: #141414;
+}
+
+.panel .container {
+    position: relative;
+    width: 90vw;
+    left: 5vw;
+    display: flex;
+}
+
+
+@media (max-aspect-ratio:658/891){
+    .panel div.container {
+        display: block;
+    }
+    div.container img {
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+.container img {
+    width: 30%;
+    height: 100%;
+}
+
+.scene {
+    width: 70%;
+}
+

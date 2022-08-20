@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!--{{ url_for('static',filename='styles/indexStyles.css') }}-->
-<!--C:\Users\trexx\Documents\PYTHON CODE LOL\PersonalWebsite\Personal-platypus-website\code\static\styles\indexStyles.css -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -8,7 +6,7 @@
         <title>Foresight</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tickerNotFoundStyles.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/aboutStyles.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.1/css/all.css. ">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/loaderStyle.css') }}">
 
@@ -30,23 +28,62 @@
         </div>
         <script src="{{url_for('static', filename='js/loader.js')}}"></script>
 
-
         <div class="header">
             <a href="/home">
                 <img class="logo" src="{{ url_for('static',filename='images/ForesightLogo.png') }}" alt="Foresight">
             </a>
         </div>
 
-        <div class="HeroContainer">            
+        <section id="Hero">
             <div class="HeroHeader">
                 <h1 class="HeroText">
-                    Ticker not found
+                    About us
                 </h1>
                 <h3 class="HeroSub">
-                    '{{InvalidTicker}}' doesnt seem to exist in our databases
+                    Literally just a stock prediction webapp.
                 </h3>
             </div>
-        </div>
+        </section>
+
+        <section id="inception" class="panel">
+            <div class="container">
+                <div class="scene">
+                    <div class="text">
+                        <h2>Formed under <a href="https://resonance-website.sentientplatypu.repl.co" target ="_blank" class="resonance">Resonance</a></h2>
+                        <p>Check us out. </p>
+                    </div>
+                </div>
+                <img src="{{ url_for('static',filename='images/LOGONOTEXT.png') }}" alt="">
+            </div>
+        </section>
+        <section id="team" class="panel">
+            <div class="container">
+                <div class="scene">
+                    <div class="text">
+                        <h2>Inspired by friends.</h2>
+                        <p>This project was inspired by CodeBozu's 3rd project, which was on stock analysis. It turned a few wheels, and a month later, I started working on Foresight. <br>
+                            CodeBozu was an EdTech Cornell startup. I say "was," because they have discontinued all operations since July. <br>
+                            Consider this a tribute.
+                        </p>
+                    </div>
+                </div>
+                <img src="https://w0.peakpx.com/wallpaper/21/687/HD-wallpaper-cultural-lofi-vida.jpg" alt="">
+            </div>
+        </section>
+        <section id="vision" class="panel">
+            <div class="container">
+                <div class="scene">
+                    <div class="text">
+                        <h2>Made for results</h2>
+                        <p>Foresight uses an LSTM neural network to predict next months stock prices. The results are incredible.</p>
+                    </div>
+                </div>
+                <img src="{{url_for('static', filename='images/appleThing.svg')}}" alt="graph">
+            </div>
+        </section>
+        <script src="{{url_for('static', filename='js/aboutUsScrollmagic.js')}}"></script>
+
+
         <footer>
             <div class="container">
                 <div class="row">
@@ -80,7 +117,8 @@
                 © 2022 Resonance
             </div>
         </footer>
-        <script src="{{ url_for('static',filename='js/indexScrollmagic.js') }}"></script>
+        <div class="background hidden" id="background">
+        </div>
 
 
 

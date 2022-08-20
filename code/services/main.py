@@ -92,7 +92,9 @@ def ContactMe(sent):
         bool = True
     return render_template("./index.html", sent=bool)
 
-
+@app.route("/about")
+def about():
+    return render_template("./about.html")
 
 @app.route("/search", methods=["GET"])
 def search():
