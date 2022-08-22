@@ -6,7 +6,7 @@ var slides = document.querySelectorAll("section.panel");
 for (var i=0; i<slides.length; i++) {
     new ScrollMagic.Scene({
             triggerElement: slides[i],
-            offset:(window.innerHeight)*0.3
+            offset:(window.innerHeight)*0.4
         })
         .setPin(slides[i], {pushFollowers: false})
         .addTo(controller);

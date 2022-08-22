@@ -74,23 +74,15 @@
             <div class="container">
                 <div class="scene">
                     <div class="text">
-                        <h2>How it works</h2>
+                        <h2>My 2022 summer project</h2>
                         <p>
-                            Foresight takes financial data from Google Finance. However, the google finance API has been discontinued. <br>
-                             Therefore I needed a solution. <br>
-                            I settled on webscraping. <br>
-                            Foresight is built on several webscraping functions that scrape the data you see from the google finance website. Dont tell them haha.
-                            After scraping this data, I display it to you through the flask application (With all the styling and scripts of course) you are viewing right now.
-                            
-                            <br>
-                            However, Google finance couldnt be the solution to everything. 
-                            Foresight makes predictions. 
-                            Tensorflow has the tools for that.
-                            Our predictions are done using an LSTM neural network. More on that in a bit.
+                            Foresight took a lot of work. As stated before, The idea came in during the Codebozu project, which was around late april. However, I couldnt get much work done cause of finals/AP exams. <br>
+                            The grind began during the summer. i tried my best to do a little bit each day I could. (Not that successfull, check my <a href="https://github.com/SentientPlatypus">github</a>) <br>
+                            Its here now. feels good. 
                         </p>
                     </div>
                 </div>
-                <img src="https://linuxpip.org/wp-content/uploads/2022/01/BS4-REMOVE-HTML-TAGS.jpg" alt="">
+                <img src="{{ url_for('static',filename='images/Summer2022.png') }}" alt="">
             </div>
         </section>
 
