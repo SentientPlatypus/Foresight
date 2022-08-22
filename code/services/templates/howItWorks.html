@@ -37,10 +37,10 @@
         <section id="Hero">
             <div class="HeroHeader">
                 <h1 class="HeroText">
-                    About us
+                    How it works
                 </h1>
                 <h3 class="HeroSub">
-                    Literally just a stock prediction webapp.
+                    its pretty simple
                 </h3>
             </div>
         </section>
@@ -49,40 +49,46 @@
             <div class="container">
                 <div class="scene">
                     <div class="text">
-                        <h2>Formed under <a href="https://resonance-website.sentientplatypu.repl.co" target ="_blank" class="resonance">Resonance</a></h2>
-                        <p>Check it out. </p>
-                    </div>
-                </div>
-                <img src="{{ url_for('static',filename='images/LOGONOTEXT.png') }}" alt="">
-            </div>
-        </section>
-        <section id="team" class="panel">
-            <div class="container">
-                <div class="scene">
-                    <div class="text">
-                        <h2>Inspired by friends.</h2>
-                        <p>This project was inspired by CodeBozu's 3rd project, which was on stock analysis. It turned a few wheels, and a month later, I started working on Foresight. <br>
-                            CodeBozu was an EdTech Cornell startup. I say "was," because they have discontinued all operations since July. <br>
-                            Consider this a tribute.
-                        </p>
-                    </div>
-                </div>
-                <img src="https://w0.peakpx.com/wallpaper/21/687/HD-wallpaper-cultural-lofi-vida.jpg" alt="">
-            </div>
-        </section>
-        <section id="team" class="panel">
-            <div class="container">
-                <div class="scene">
-                    <div class="text">
-                        <h2>My 2022 summer project</h2>
+                        <h2>The Two Applications</h2>
                         <p>
-                            Foresight took a lot of work. Routing, Styling, Scripting, Webscraping, Machine learning, integration and deployment were all things that needed to happen. it was daunting at first, but my enthusiasm increased as things started coming together, especially after integrating the graph (Huge thanks to <a href="https://www.anychart.com">anychart</a>) <br>
-                            The grind began during the summer. i tried my best to do a little bit each day I could. (Not that successfull, check my <a href="https://github.com/SentientPlatypus">github</a>) <br>
-                            Its here now. feels good. 
+                            Foresight splits its responsibilities into 2 applications: The webapp you are viewing right now, and the Foresight API. <br>
+                            The webapp is responsible for displaying content, while the API does most of the heavylifting. <br>
+                            I did this, because I needed to access data in javascript that is only available with python libraries. <br>
+                            So, I just had my scripts send queries to a python application: the Foresight API.
+                            
                         </p>
                     </div>
                 </div>
-                <img src="{{ url_for('static',filename='images/Summer2022.png') }}" alt="">
+                <img src="{{ url_for('static',filename='images/ForesightLogoNoText.png') }}" alt="">
+            </div>
+        </section>
+        <section id="team" class="panel">
+            <div class="container">
+                <div class="scene">
+                    <div class="text">
+                        <h2>The Foresight API</h2>
+                        <p>
+                            As stated before, I made the foresight API do all the heavy lifting like webscraping and predictions. Its just a flask app that returns strings. <br>
+                            Its open source. Check out its <a href="https://github.com/SentientPlatypus/Foresight-API">github</a> if you're interested.
+                        </p>
+                    </div>
+                </div>
+                <img src="https://www.pngitem.com/pimgs/m/159-1595977_flask-python-logo-hd-png-download.png" alt="">
+            </div>
+        </section>
+        <section id="team" class="panel">
+            <div class="container">
+                <div class="scene">
+                    <div class="text">
+                        <h2>Webscraping</h2>
+                        <p>
+                            A lot of the data you see is webscraped from google finance like News articles and company descriptions. Why? because the google finance api has been discontinued. <br>
+                            The Foresight API became a replacement for this. I mainly used Beautiful soup for this. It works really well, and there havnt been any issues lately. <br>
+                            Pretty much theres a function that scrapes data like news articles and static company information, and will return it when queried.
+                        </p>
+                    </div>
+                </div>
+                <img src="https://linuxpip.org/wp-content/uploads/2022/01/BS4-REMOVE-HTML-TAGS.jpg" alt="">
             </div>
         </section>
 
@@ -90,14 +96,40 @@
             <div class="container">
                 <div class="scene">
                     <div class="text">
-                        <h2>Made for results</h2>
-                        <p>Foresight uses an LSTM neural network to predict next months stock prices. The results are incredible.</p>
+                        <h2>Predictions</h2>
+                        <p>
+                            The Foresight API uses an LSTM neural network to predict next months stock prices. <br>
+                            First, the API recieves the query, Then I get data from yfinance, Then i reshape the data so I can fit it into Tensorflow's Dense LSTM. <br>
+                            Then, I take the resulting dataset and send it back as a csv string.
+                        </p>
                     </div>
                 </div>
                 <img src="{{url_for('static', filename='images/appleThing.svg')}}" alt="graph">
             </div>
         </section>
+        <section id="vision" class="panel">
+            <div class="container">
+                <div class="scene">
+                    <div class="text">
+                        <h2>Predictions</h2>
+                        <p>
+                            The Foresight API uses an LSTM neural network to predict next months stock prices. <br>
+                            First, the API recieves the query, Then I get data from yfinance, Then i reshape the data so I can fit it into Tensorflow's Dense LSTM. <br>
+                            Then, I take the resulting dataset and send it back as a csv string.
+                        </p>
+                    </div>
+                </div>
+                <img src="{{url_for('static', filename='images/appleThing.svg')}}" alt="graph">
+            </div>
+        </section>
+
+
+
+
+
+        
         <script src="{{url_for('static', filename='js/aboutUsScrollmagic.js')}}"></script>
+
 
 
         <footer>
@@ -108,6 +140,7 @@
                         <ul>
                             <li><a href="/">Home</a></li>
                             <li><a href="/about">About</a></li>
+                            <li><a href="/howItWorks">How it works</a></li>
                         </ul>
                     </div>
                     <div class="col-sm3">
@@ -134,4 +167,12 @@
         </footer>
         <div class="background hidden" id="background">
         </div>
+
+
+
+
+
+
+
+
     </body>

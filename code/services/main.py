@@ -7,6 +7,7 @@ import constants
 import helperfunctions
 import pprint
 
+
 context = ssl.create_default_context()
 
 
@@ -95,6 +96,11 @@ def ContactMe(sent):
 @app.route("/about")
 def about():
     return render_template("./about.html")
+
+
+@app.route("/howItWorks")
+def howItWorks():
+    return render_template("./howItWorks.html")
 
 @app.route("/legal")
 def legal():
