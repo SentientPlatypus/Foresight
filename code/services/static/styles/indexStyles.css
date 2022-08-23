@@ -53,7 +53,6 @@ body {
 .header {
     position: absolute;
     width: 100%;
-    justify-content: center;
     text-align: center;
     display: flex;
     top: 0px;
@@ -63,6 +62,24 @@ body {
     border-bottom: 1px solid #7ffff7;
 }
 
+#logo {
+    position: relative;
+    left: calc(50vw - 50px);
+}
+
+#hamburger {
+    position: absolute;
+    right: 0px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 40px;
+    transition: 0.3s;
+}
+
+#hamburger:hover {
+    color: #7ffff7;
+}
 
 .logo {
     cursor: pointer;
