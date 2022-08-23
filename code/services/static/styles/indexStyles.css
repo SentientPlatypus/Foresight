@@ -79,6 +79,7 @@ body {
 
 #hamburger:hover {
     color: #7ffff7;
+    cursor: pointer;
 }
 
 .logo {

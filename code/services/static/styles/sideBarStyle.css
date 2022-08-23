@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Open+Sans&family=Raleway&family=Roboto+Mono&display=swap');
+
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    font-family: 'Open Sans';
+    font-weight: 800;
+  }
+  
+  .sidebar a:hover {
+    color: #7ffff7;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+
+  #hamburger {
+    position: fixed;
+    right: 0px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 40px;
+    transition: 0.3s;
+    z-index: 1;
+}
+
+#hamburger:hover {
+    color: #7ffff7;
+    cursor: pointer;
+}

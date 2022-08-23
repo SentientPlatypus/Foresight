@@ -87,6 +87,15 @@ p {
     color: #707070;
 }
 
+p a {
+    transition: 0.3s;
+    color: white;
+}
+p a:hover {
+    transition: 0.3s;
+    color: #7ffff7;
+}
+
 h1.HeroText {
     margin-bottom: 0px;
     justify-content: center;
