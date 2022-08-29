@@ -67,21 +67,6 @@ body {
     left: calc(50vw - 50px);
 }
 
-#hamburger {
-    position: absolute;
-    right: 0px;
-    background-color: transparent;
-    color: white;
-    border: none;
-    font-size: 40px;
-    transition: 0.3s;
-}
-
-#hamburger:hover {
-    color: #7ffff7;
-    cursor: pointer;
-}
-
 .logo {
     cursor: pointer;
     width: auto;
