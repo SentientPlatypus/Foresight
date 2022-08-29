@@ -7,7 +7,7 @@ class possibleActions
 
 class constants
 {
-    static API_URL = "https://Foresight-API.sentientplatypu.repl.co"
+    static API_URL = "https://Foresightapi.herokuapp.com"
 }
 
 function toggleBackground() {
