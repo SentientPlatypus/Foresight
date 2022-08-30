@@ -44,7 +44,7 @@
     background-color: transparent;
     color: white;
     border: none;
-    font-size: 40px;
+    font-size: 5vh;
     transition: 0.3s;
     z-index: 1;
 }
