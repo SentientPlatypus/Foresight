@@ -2,11 +2,8 @@ from flask import Flask,render_template, request, session, redirect, url_for
 from flask_mail import Mail, Message
 import smtplib, ssl
 from threading import Thread
-import yfinance as yf
 import constants
 import helperfunctions
-import pprint
-
 
 context = ssl.create_default_context()
 
@@ -152,15 +149,13 @@ def HandleData():
     mail.send(msg)
     return redirect(url_for("ContactMe", sent=1))
 
-def run():
-  app.run(host='0.0.0.0',port=8080)
-
-
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
-
 
 if __name__ == '__main__':
+    def run():
+        app.run(host='0.0.0.0',port=8080)
+
+    def keep_alive():
+        t = Thread(target=run)
+        t.start()
     keep_alive()
 
