@@ -77,6 +77,7 @@ anychart.onDocumentReady(function () {
         chart.draw();
         console.log("finished draing chart")
         changeTableStyle()
+        $('#loadingText').fadeOut("slow")
       }
     );
   });

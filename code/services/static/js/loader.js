@@ -8,9 +8,5 @@ function toggleLoader()
 }
 
 
-function toggleSpinny()
-{
-    $("#loading-bar-spinner").fadeToggle("slow");
-}
 
 
