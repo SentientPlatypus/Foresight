@@ -1,3 +1,16 @@
+function getDate()
+{
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  
+  today = yyyy + '-' + mm + '-' + dd;
+  return today
+}
+
+
+
 anychart.onDocumentReady(function () {
     anychart.data.loadCsvFile(
       constants.API_URL+'/getNumbers/' + document.URL.split("/").pop(),
@@ -20,6 +33,14 @@ anychart.onDocumentReady(function () {
 
         // create first plot on the chart
         var plot = chart.plot(0);
+
+        var controller = plot.annotations();
+
+        // create a Vertical Line annotation
+        controller.verticalLine({
+            xAnchor: getDate()
+        });
+
 
         // set grid settings
         plot.yGrid(true).xGrid(true).yMinorGrid(false).xMinorGrid(false);
