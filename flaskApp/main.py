@@ -1,5 +1,4 @@
 from flask import Flask,render_template, request, session, redirect, url_for
-from flask_mail import Mail, Message
 import smtplib, ssl
 from threading import Thread
 from flaskApp import constants
@@ -133,21 +132,7 @@ def data(companyTicker:str):
         newsList = helperfunctions.getNews(companyTicker)
     )
 
-@app.route("/ContactMe/HandleData", methods=['POST'])
-def HandleData():
-    projectpath = request.form    
-    sendingEmail = projectpath.get("email")
-    name = projectpath.get("name")
-    subject = projectpath.get("subject")
-    message = projectpath.get("content")
-    msg = Message(
-        subject = subject,
-        recipients= [constants.SENDTOEMAIL],
-        body = f"FROM: {name}, EMAIL: {sendingEmail}, \n {message}"
-    )
-    msg.sender = constants.EMAIL
-    mail.send(msg)
-    return redirect(url_for("ContactMe", sent=1))
+
 
 
 if __name__ == '__main__':
