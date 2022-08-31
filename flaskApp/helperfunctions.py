@@ -1,6 +1,5 @@
 import requests
-import constants
-import json
+from flaskApp import constants
 
 
 

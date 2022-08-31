@@ -2,8 +2,8 @@ from flask import Flask,render_template, request, session, redirect, url_for
 from flask_mail import Mail, Message
 import smtplib, ssl
 from threading import Thread
-import constants
-import helperfunctions
+from flaskApp import constants
+from flaskApp import helperfunctions
 
 context = ssl.create_default_context()
 
