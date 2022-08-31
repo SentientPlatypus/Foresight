@@ -40,7 +40,7 @@ app.config.update(dict(
 ))
 
 
-mail = Mail(app)
+
 
 
 @app.errorhandler(404)
