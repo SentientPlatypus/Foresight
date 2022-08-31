@@ -30,19 +30,6 @@ def createApp():
 
 app = createApp()
 
-app.config.update(dict(
-    MAIL_SERVER = 'smtp.gmail.com',
-    MAIL_PORT = 587,
-    MAIL_USE_TLS = True,
-    MAIL_USE_SSL = False,
-    MAIL_USERNAME = constants.EMAIL,
-    MAIL_PASSWORD = constants.EMAILPASSWORD,
-))
-
-
-
-
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template(
