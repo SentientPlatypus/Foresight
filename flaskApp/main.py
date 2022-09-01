@@ -1,18 +1,7 @@
 from flask import Flask,render_template, request, session, redirect, url_for
-import smtplib, ssl
 from threading import Thread
-from flaskApp import constants
 from flaskApp import helperfunctions
 
-context = ssl.create_default_context()
-
-
-class constants():
-    EMAILREGEX            = '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    EMAIL                 = "trexycrocs@gmail.com"
-    EMAILPASSWORD         = "geneavianina"
-    PORT                  = 465  # For SSL
-    API_WEBSITE_URL         = "https://ForesightAPI.sentientplatypu.repl.co"
 
 #path = '/home/SentientPlatypus/Personal-platypus-website/code'
 #if path not in sys.path:
