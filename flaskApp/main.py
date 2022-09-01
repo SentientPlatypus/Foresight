@@ -1,13 +1,10 @@
 from flask import Flask,render_template, request, session, redirect, url_for
 from threading import Thread
 from flaskApp import helperfunctions
+import gunicorn
+import os
 
-
-#path = '/home/SentientPlatypus/Personal-platypus-website/code'
-#if path not in sys.path:
-#    sys.path.append(path)
-
-#from services.main import app as application
+server = gunicorn.SERVER
 
 def createApp():
     app = Flask(
