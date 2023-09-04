@@ -122,8 +122,7 @@ First clone this repository.  Then, you want pip freeze the requirements, or jus
 ### Prerequisites
 
 To get requirements, just 
-* npm
-  ```sh
+* ```sh
   pip freeze > requirements.txt
   ```
 
