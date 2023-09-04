@@ -5,7 +5,7 @@ html{
 }
 
 body {
-    background: #52ccff;
+    background: #141414;
     overflow-x: hidden;
 }
 
@@ -19,7 +19,7 @@ body {
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #52ccff;
+    background: #141414;
     border-radius: 10px;
   }
   
@@ -58,7 +58,7 @@ body {
     top: 0px;
     left: 0px;
     height: 8vh;
-    background: #52ccff;
+    background: #141414;
 }
 
 #logo {
