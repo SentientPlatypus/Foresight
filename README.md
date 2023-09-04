@@ -83,7 +83,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="flaskApp\static\images\image.png" alt="Logo">
 
 The Foresight is a webapp that does stock price prediction with TensorFlow's LSTM dense model.
 Foresight splits its responsibilities into 2 applications: The webapp, and the Foresight API.
@@ -92,7 +92,7 @@ You may be wondering, why webscraping? Well thats because google finance has a L
 <img src="flaskApp\static\images\gf.png" alt="Logo">
 
 Unfortunately, 
-![DEPRECATED](flaskApp\static\images\discontinued.png)
+<img src="flaskApp\static\images\discontinued.png" alt="Logo">
 So I webscraped the information!
 In hindsight, the webscraping does slow things down, A LOT. I learned from this mistake in my latest web implementation of a model at <a href="https://github.com/Beluga-Sturgeon">Beluga Sturgeon Financial</a></li> (this time its a reinforcement learning model).
 
