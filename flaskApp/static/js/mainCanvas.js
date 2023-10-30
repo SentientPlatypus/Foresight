@@ -1,72 +1,34 @@
-// require()
-// import * as dat from '../../../../node_modules/dat.gui'
-
 var mainCanvas = document.getElementById("mainCanvas");
 var c = mainCanvas.getContext("2d");
-// const gui = new dat.GUI();
 
-mainCanvas.width = innerWidth;
-mainCanvas.height = innerHeight;
+var x = mainCanvas.width / 2;
+var y = mainCanvas.height / 2;
+var arrowWidth = 20;
+var arrowHeight = 40;
+var arrowColor = "blue";
+var arrowSpeed = 2;
+var arrowDirection = 1; // 1 for up, -1 for down
 
+function drawArrow() {
+    c.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
 
-const wave = {
-    y: mainCanvas.height / 2,
-    length: 0.01,
-    amplitude: 0.01,
-    frequency: 0.015
-};
-
-const strokeColor = {
-    h:176,
-    s:100,
-    l:75
-}
-
-const backgroundColor = {
-    r: 20,
-    g: 20,
-    b: 20,
-    a: 1
-}
-
-// gui.add(wave, 'y');
-
-c.lineWidth = 3;
-
-var mousex = 0;
-var mousey = 0;
-
-document.addEventListener("mousemove", () => {
-    mousex = event.clientX; // Gets Mouse X
-    mousey = event.clientY; // Gets Mouse Y
-});
-
-
-
-
-console.log(mousey)
-let increment = wave.frequency;
-function animate() {
-    requestAnimationFrame(animate);
-    // c.clearRect(0,0, mainCanvas.width, mainCanvas.height);
-    c.fillStyle = `rgba(${backgroundColor.r}, ${backgroundColor.g}, ${
-        backgroundColor.b
-      }, ${backgroundColor.a})`
-    c.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
-
-
+    c.fillStyle = arrowColor;
     c.beginPath();
-    c.moveTo(0, mainCanvas.height / 2);
-    
-    for (let i = 0; i < mainCanvas.width; i+=100)
-    {
-        c.lineTo(i, Math.random() * mainCanvas.height + 1);
-    }
-    c.strokeStyle = `hsl(${strokeColor.h}, ${strokeColor.s}%, ${strokeColor.l}%)`;
-    c.stroke();
-    wave.amplitude = (mousey - wave.y)
-    increment += wave.frequency;
+    c.moveTo(x, y);
+    c.lineTo(x - arrowWidth / 2, y + arrowHeight * arrowDirection);
+    c.lineTo(x + arrowWidth / 2, y + arrowHeight * arrowDirection);
+    c.closePath();
+    c.fill();
 
+    // Change direction if the arrow reaches the canvas boundaries
+    if (y <= arrowHeight / 2 || y >= mainCanvas.height - arrowHeight / 2) {
+        arrowDirection *= -1;
+    }
+
+    // Update the arrow's position
+    y += arrowSpeed * arrowDirection;
+
+    requestAnimationFrame(drawArrow);
 }
 
-animate();
+drawArrow();
